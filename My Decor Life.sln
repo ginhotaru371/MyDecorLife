@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaintCore", "PaintCore.csproj", "{0fe8d673-d18a-c44d-105e-e26fd0db2a8b}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaintIn3D", "PaintIn3D.csproj", "{6b31f713-dd54-a070-f482-3547b500f359}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CW.Common", "CW.Common.csproj", "{5e1a0b3f-392d-ec8e-d197-354de84bd91d}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{99e79f9e-0f98-34bd-efbb-28a027a37218}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{df5a20a6-78c4-8a94-59da-d99164ddf731}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{2f23d3fd-3c86-d23f-06bc-677371270e57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bayat.Games.Utilities.SceneManager.Editor", "Bayat.Games.Utilities.SceneManager.Editor.csproj", "{0662473a-6c9d-52f1-2cef-b3e7228548a5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CW.ShaderBundle", "CW.ShaderBundle.csproj", "{b30041a6-3513-ef1e-ff4d-9cdff262747f}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor-firstpass", "Assembly-CSharp-Editor-firstpass.csproj", "{48e63e14-cf19-92a4-49ce-34510579e2ee}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0fe8d673-d18a-c44d-105e-e26fd0db2a8b}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0fe8d673-d18a-c44d-105e-e26fd0db2a8b}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6b31f713-dd54-a070-f482-3547b500f359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6b31f713-dd54-a070-f482-3547b500f359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5e1a0b3f-392d-ec8e-d197-354de84bd91d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5e1a0b3f-392d-ec8e-d197-354de84bd91d}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99e79f9e-0f98-34bd-efbb-28a027a37218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99e79f9e-0f98-34bd-efbb-28a027a37218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{df5a20a6-78c4-8a94-59da-d99164ddf731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{df5a20a6-78c4-8a94-59da-d99164ddf731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2f23d3fd-3c86-d23f-06bc-677371270e57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2f23d3fd-3c86-d23f-06bc-677371270e57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0662473a-6c9d-52f1-2cef-b3e7228548a5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0662473a-6c9d-52f1-2cef-b3e7228548a5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{b30041a6-3513-ef1e-ff4d-9cdff262747f}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{b30041a6-3513-ef1e-ff4d-9cdff262747f}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48e63e14-cf19-92a4-49ce-34510579e2ee}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48e63e14-cf19-92a4-49ce-34510579e2ee}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

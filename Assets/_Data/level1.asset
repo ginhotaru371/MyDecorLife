@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 737b7351b2624de5b62ea2ad31f7fe03, type: 3}
+  m_Name: level1
+  m_EditorClassIdentifier: 
+  oldRoom: {fileID: 5975769098530071669, guid: 1d58e944aed872746878bb4d2970c12e, type: 3}
+  boxDecoration: {fileID: 6645865353784612883, guid: bd2f2b34755003243ad237b7995f6eaa,
+    type: 3}
+  furnitures:
+  - id: wardrobe1
+    type: 3
+    image: {fileID: 21300000, guid: c8a406bf06a6c4646be9f34e90a518dc, type: 3}
+    prefab: {fileID: 191957949996476177, guid: 1a3489eb5d136fa4e81864da479e2037, type: 3}
+  - id: wardrobe2
+    type: 3
+    image: {fileID: 21300000, guid: f8335d39b3068fa4b9c7b123e260967f, type: 3}
+    prefab: {fileID: 7300357769250532115, guid: 799853ad6e327ec4ea3a0197288c064c,
+      type: 3}
+  - id: wardrobe3
+    type: 3
+    image: {fileID: 21300000, guid: 9449562529550df4dafeb65a3e1cc89b, type: 3}
+    prefab: {fileID: 477266845983423156, guid: 60b65982c524de84e83694cdbd8c7162, type: 3}
+  decorations: []
+  wallColor:
+  - _color: {r: 1, g: 0.3443396, b: 0.3443396, a: 1}
+    _image: {fileID: 0}
+  - _color: {r: 0.6312891, g: 1, b: 0.2688679, a: 1}
+    _image: {fileID: 0}
+  - _color: {r: 0.3254717, g: 0.59866, b: 1, a: 1}
+    _image: {fileID: 0}
+  floorMat:
+  - _mat: {fileID: 0}
+    _image: {fileID: 0}
+  - _mat: {fileID: 0}
+    _image: {fileID: 0}
+  - _mat: {fileID: 0}
+    _image: {fileID: 0}
