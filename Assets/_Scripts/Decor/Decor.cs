@@ -4,7 +4,7 @@ namespace _Scripts.Decor
 {
     public class Decor : Singleton<Decor>
     {
-        [SerializeField] private Camera mainCamera;
+        private Camera mainCamera;
     
         private GameObject _selectedObject;
         private GameObject _box;
@@ -12,6 +12,7 @@ namespace _Scripts.Decor
         private LayerMask _maskWall;
         private Vector3 _offset;
         private Vector3 _originPos;
+        [SerializeField] private Vector3 _target;
     
         private bool _placed;
 
@@ -30,20 +31,14 @@ namespace _Scripts.Decor
 
         private void Init()
         {
-            FindBox();
-            _maskWall = LayerMask.GetMask("Wall", "Target");
-        }
-
-        private void FindBox()
-        {
-            if (!_box)
-            {
-                _box = GameObject.FindGameObjectWithTag("box");
-            }
+            mainCamera = Camera.main;
+            _maskWall = LayerMask.GetMask("Wall", "Floor");
         }
 
         private void Update()
         {
+
+#if UNITY_EDITOR
             if (Input.GetMouseButtonDown(0))
             {
                 var hit = Cast();
@@ -65,19 +60,18 @@ namespace _Scripts.Decor
             {
                 var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-                Physics.Raycast(ray, out var hit, Mathf.Infinity, _maskWall);
-            
-                var target = new Vector3(-0.274f, 0.77f, 7.739f);
+                Physics.Raycast(ray, out var hit, Mathf.Infinity);
 
-                if (Vector3.Distance(hit.point, target) < 0.2f)
+                if (Vector3.Distance(hit.point, _target) < 0.5f)
                 {
-                    _selectedObject.transform.position = target;
+                    _selectedObject.transform.position = _target;
                     _placed = true;
                 }
 
                 if (!_placed)
                 {
                     _selectedObject.transform.position = GetMousePos() + _offset;
+                    Debug.Log(_selectedObject.transform.position);
                 }
             }
     
@@ -95,22 +89,117 @@ namespace _Scripts.Decor
                     _selectedObject = null;
                 }
             }
-        }
+#endif
+
+#if UNITY_ANDROID
+            
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                if (touch.phase == TouchPhase.Began)
+                {
+                    var hit = Cast();
+            
+                    if (!_selectedObject)
+                    {
+                        if (hit.collider)
+                        {
+                            if (!hit.collider.CompareTag("decor")) return;
     
+                            _selectedObject = hit.collider.gameObject;
+                            _offset = _selectedObject.transform.position - GetMousePos();
+                            _originPos = _selectedObject.transform.position;
+                        }
+                    }
+                }
+                
+                if (touch.phase == TouchPhase.Moved && _selectedObject)
+                {
+                    var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+                    Physics.Raycast(ray, out var hit, Mathf.Infinity);
+
+                    if (Vector3.Distance(hit.point, _target) < 0.5f)
+                    {
+                        _selectedObject.transform.position = _target;
+                        _placed = true;
+                    }
+
+                    if (!_placed)
+                    {
+                        _selectedObject.transform.position = GetMousePos() + _offset;
+                        Debug.Log(_selectedObject.transform.position);
+                    }
+                }
+    
+                if (touch.phase == TouchPhase.Ended)
+                {
+                    if (!_selectedObject) return;
+                    if (_placed)
+                    {
+                        _selectedObject = null;
+                        _placed = false;
+                    }
+                    else
+                    {
+                        _selectedObject.transform.position = _originPos;
+                        _selectedObject = null;
+                    }
+                }
+                
+            }
+#endif
+            
+        }
+        
         private RaycastHit Cast()
         {
-            var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-    
+            Ray ray = new Ray();
+#if UNITY_EDITOR
+            ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+#endif
+#if UNITY_ANDROID
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                
+                ray = mainCamera.ScreenPointToRay(touch.position);
+
+            }
+#endif
             Physics.Raycast(ray, out var hit, Mathf.Infinity);
         
             return hit;
         }
-    
+        
         private Vector3 GetMousePos()
         {
-            var mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+            Vector3 mousePos = new Vector3();
+            
+#if UNITY_EDITOR
+            mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y,
                 mainCamera.WorldToScreenPoint(transform.position).z);
+            
+#endif
+
+#if UNITY_ANDROID
+
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+                mousePos = new Vector3(touch.position.x, Input.GetTouch(0).position.y,
+                    mainCamera.WorldToScreenPoint(transform.position).z);
+            }
+#endif
             return mainCamera.ScreenToWorldPoint(mousePos);
+        }
+
+
+        public void SetTarget(Vector3 target)
+        {
+            _target = transform.TransformPoint(target);
+            
         }
     }
 }

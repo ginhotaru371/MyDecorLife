@@ -1,5 +1,5 @@
-using System;
-using System.Collections.Generic;
+using _Scripts.Decor;
+using _Scripts.UI;
 using UnityEngine;
 
 namespace _Scripts
@@ -22,11 +22,6 @@ namespace _Scripts
             base.Awake();
         }
 
-        private void Start()
-        {
-            Init();
-        }
-
         void Update()
         {
             if (!PaintManager.instance.Paintable()) return;
@@ -38,18 +33,14 @@ namespace _Scripts
                 RaycastHit hit;
 
                 if (Physics.Raycast(ray, out hit, 100.0f)){
-
                     if (hit.collider)
                     {
-                        if (hit.collider.CompareTag("wall"))
-                        {
-                            Debug.DrawRay(ray.origin, hit.point - ray.origin, Color.red);
+                        Debug.DrawRay(ray.origin, hit.point - ray.origin, Color.red);
                         
-                            transform.position = hit.point;
-                            Paintable p = hit.collider.GetComponent<Paintable>();
-                            if(ps != null){
-                                PaintManager.instance.Paint(p, hit.point, radius, hardness, strength, paintColor);
-                            }
+                        transform.position = hit.point;
+                        Paintable p = hit.collider.GetComponent<Paintable>();
+                        if(ps != null){
+                            PaintManager.instance.Paint(p, hit.point, radius, hardness, strength, paintColor);
                         }
                     }
                 }
@@ -60,9 +51,11 @@ namespace _Scripts
                 var percent = ps.CalculateFill(paintColor, 0.5f);
                 Debug.Log(percent);
 
-                if (percent > 115)
+                if (percent > 40.0f)
                 {
                     PaintManager.instance.Painting(false);
+                    ButtonGroup.instance.Hide();
+                    NewFurniture.instance.SpawnNewFurniture();
                 }
             }
 #endif
@@ -76,7 +69,7 @@ namespace _Scripts
 
                 if (touch.phase == TouchPhase.Moved)
                 {
-                    Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+                    Ray ray = mainCamera.ScreenPointToRay(touch.position);
                     RaycastHit hit;
 
                     if (Physics.Raycast(ray, out hit, 100.0f)){
@@ -100,11 +93,12 @@ namespace _Scripts
                 if (touch.phase == TouchPhase.Ended)
                 {
                     var percent = ps.CalculateFill(paintColor, 0.5f);
-                    Debug.Log(percent);
 
-                    if (percent > 115)
+                    if (percent > 40.0f)
                     {
                         PaintManager.instance.Painting(false);
+                        ButtonGroup.instance.Hide();
+                        NewFurniture.instance.SpawnNewFurniture();
                     }
                 }
                 
@@ -113,16 +107,8 @@ namespace _Scripts
             
         }
 
-        private void Init()
+        public void Init()
         {
-            // foreach (Transform child in transform.parent)
-            // {
-            //     if (child.CompareTag("wall"))
-            //     {
-            //         ps.Add(child.GetComponent<Paintable>());
-            //     }
-            // }
-
             var wall = GameObject.FindGameObjectWithTag("wall");
             ps = wall.GetComponent<Paintable>();
 
@@ -132,11 +118,6 @@ namespace _Scripts
         {
             if (color == paintColor) return;
             paintColor = color;
-            //
-            // foreach (var child in ps)
-            // {
-            //     PaintManager.instance.InitTextures(child);
-            // }
             PaintManager.instance.InitTextures(ps);
         
             PaintManager.instance.Painting(true);

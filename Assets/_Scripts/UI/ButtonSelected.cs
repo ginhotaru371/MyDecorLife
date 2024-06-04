@@ -13,7 +13,7 @@ namespace _Scripts.UI
         private Button _buttonSelect;
         private DecorButton _buttonDecor;
         private Furniture _furniture;
-        private Material _mat;
+        [SerializeField] private Texture2D _texture;
         private Color _color;
     
         public GameObject furnitureObject;
@@ -54,8 +54,8 @@ namespace _Scripts.UI
             switch (_type)
             {
                 case Type.Wall:
-                    ChangeWallColor();
-                    _buttonDecor.SetBool(true);
+                    // ChangeWallColor();
+                    // _buttonDecor.SetBool(true);
                     break;
                 case Type.Floor:
                     ChangeFloor();
@@ -87,7 +87,7 @@ namespace _Scripts.UI
 
         private void ChangeFloor()
         {
-            FloorChange.instance.Change(_mat);
+            FloorChange.instance.Change(_texture);
         }
 
         private void ChangeWallColor()
@@ -108,7 +108,7 @@ namespace _Scripts.UI
             _buttonDecor = decorButton;
 
             _button.transform.GetChild(1).GetComponent<Image>().sprite = floor.Image;
-            _mat = floor.Mat;
+            _texture = floor.Texture;
         }
 
         public void SetFurniture(Furniture newFur, DecorButton decorButton)

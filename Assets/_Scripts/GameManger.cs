@@ -74,6 +74,8 @@ namespace _Scripts
             {
                 oldRoom = Instantiate(level.Result.oldRoom);
                 oldRoom.name = "Old Room";
+                
+                MousePainter.instance.Init();
 
                 _readyToPlay = true;
             }

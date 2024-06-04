@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _Scripts.UI;
 using DG.Tweening;
 using UnityEngine;
 
@@ -23,13 +24,18 @@ namespace _Scripts.Decor
         public void SpawnNewBoxDecoration()
         {
             var oriPos = _level.boxDecoration.transform.position;
-            var newPos = new Vector3(oriPos.x, oriPos.y + 1.0f, oriPos.z);
+            var newPos = transform.TransformPoint(oriPos);
+            newPos.y += 2.0f;
             
             var newBox = Instantiate(_level.boxDecoration, newPos, Quaternion.identity, transform);
-            newBox.tag = "box_decor";
             newBox.layer = LayerMask.NameToLayer("Box");
 
-            newBox.transform.DOLocalMove(oriPos, 1.0f).SetEase(Ease.OutBounce);
+            newBox.transform.DOLocalMove(oriPos, 1.0f).SetEase(Ease.OutBounce).OnComplete(() =>
+            {
+                newBox.GetComponent<DecorBox>().SetDecorationSpawnPos(newBox.transform.localPosition);
+            });
+            
+            ButtonGroup.instance.HideCompleteButton();
         }
         //
         // public void SpawnNewDecorations()

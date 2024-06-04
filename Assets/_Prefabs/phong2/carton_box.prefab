@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 486459606618363672}
   m_Layer: 7
   m_Name: carton_box
-  m_TagString: box
+  m_TagString: box_decor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

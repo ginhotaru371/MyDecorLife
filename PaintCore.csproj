@@ -72,8 +72,8 @@
     <Compile Include="Assets\Plugins\CW\PaintCore\Required\Scripts\CwModel.cs" />
     <Compile Include="Assets\Plugins\CW\PaintCore\Required\Scripts\CwPointerPen.cs" />
     <Compile Include="Assets\Plugins\CW\PaintCore\Extras\Scripts\CwChangeCounterText.cs" />
-    <Compile Include="Assets\Plugins\CW\PaintCore\Required\Scripts\CwStateManager.cs" />
     <Compile Include="Assets\Plugins\CW\PaintCore\Required\Scripts\CwRenderDepth.cs" />
+    <Compile Include="Assets\Plugins\CW\PaintCore\Required\Scripts\CwStateManager.cs" />
     <Compile Include="Assets\Plugins\CW\PaintCore\Required\Scripts\CwModifyPositionRandom.cs" />
     <Compile Include="Assets\Plugins\CW\PaintCore\Required\Scripts\CwPointerMouse.cs" />
     <Compile Include="Assets\Plugins\CW\PaintCore\Required\Scripts\IHitTriangle.cs" />

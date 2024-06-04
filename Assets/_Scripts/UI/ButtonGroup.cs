@@ -55,11 +55,11 @@ namespace _Scripts.UI
             Show();
         }
 
-        public void Show(List<Floor> mat, DecorButton decorButton)
+        public void Show(List<Floor> texture, DecorButton decorButton)
         {
-            _btn1.GetComponent<ButtonSelected>().SetFloor(mat[0], decorButton);
-            _btn2.GetComponent<ButtonSelected>().SetFloor(mat[1], decorButton);
-            _btn3.GetComponent<ButtonSelected>().SetFloor(mat[2], decorButton);
+            _btn1.GetComponent<ButtonSelected>().SetFloor(texture[0], decorButton);
+            _btn2.GetComponent<ButtonSelected>().SetFloor(texture[1], decorButton);
+            _btn3.GetComponent<ButtonSelected>().SetFloor(texture[2], decorButton);
         
             _btn1.GetComponent<ButtonSelected>().SetType(Type.Floor);
             _btn2.GetComponent<ButtonSelected>().SetType(Type.Floor);
@@ -101,11 +101,13 @@ namespace _Scripts.UI
         public void ShowCompleteButton()
         {
             _btnComplete.gameObject.SetActive(true);
+            _btnComplete.interactable = true;
         }
 
         public void HideCompleteButton()
         {
             _btnComplete.gameObject.SetActive(false);
+            _btnComplete.interactable = false;
         }
 
         public void Hide()

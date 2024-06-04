@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace _Scripts.Decor
 {
@@ -8,7 +10,7 @@ namespace _Scripts.Decor
     {
         private Camera mainCamera;
         
-        public GameObject prefab;
+        private List<Decoration> prefabs;
 
         private GameObject _decor;
 
@@ -17,12 +19,52 @@ namespace _Scripts.Decor
         private void Start()
         {
             mainCamera = Camera.main;
-            _newPos = transform.localPosition;
-            _newPos.y += 0.02f;
+            prefabs = new List<Decoration>(Addressables.LoadAssetAsync<Level>("level1").Result.decorations);
         }
 
         private void Update()
         {
+            
+#if UNITY_EDITOR
+            if (Input.GetMouseButtonDown(0))
+            {
+                Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag("box_decor"))
+                {
+                    if (!_decor)
+                    {
+                        if (prefabs.Count > 0)
+                        {
+                            var oriPos = prefabs[0].Prefab.transform.position;
+                            Decor.instance.SetTarget(oriPos);
+                            
+                            _decor = Instantiate(prefabs[0].Prefab, transform.position, Quaternion.identity, transform.parent);
+                            prefabs.RemoveAt(0);
+
+                            _decor.transform.DOLocalMove(_newPos, 0.5f).SetEase(Ease.OutBack);
+                        }
+
+                    }
+                    else
+                    {
+                        if (_decor.transform.localPosition != _newPos && prefabs.Count > 0)
+                        {
+                            _decor = null;
+                            var oriPos = prefabs[0].Prefab.transform.position;
+                            Decor.instance.SetTarget(oriPos);
+                            
+                            _decor = Instantiate(prefabs[0].Prefab, transform.position, Quaternion.identity, transform.parent);
+                            prefabs.RemoveAt(0);
+                            
+                            _decor.transform.DOLocalMove(_newPos, 0.5f).SetEase(Ease.OutBack);
+                        }
+                    }
+                }
+            }
+#endif
+            
 #if UNITY_ANDROID
             if (Input.touchCount > 0)
             {
@@ -37,18 +79,30 @@ namespace _Scripts.Decor
                     {
                         if (!_decor)
                         {
-                            _decor = Instantiate(prefab, transform.position, Quaternion.identity, transform.parent);
+                            if (prefabs.Count > 0)
+                            {
+                                var oriPos = prefabs[0].Prefab.transform.position;
+                                Decor.instance.SetTarget(oriPos);
+                                
+                                _decor = Instantiate(prefabs[0].Prefab, transform.position, Quaternion.identity, transform.parent);
+                                prefabs.RemoveAt(0);
 
-                            _decor.transform.DOLocalMove(_newPos, 0.5f).SetEase(Ease.OutBack);
+                                _decor.transform.DOLocalMoveY(_newPos.y, 0.5f).SetEase(Ease.OutBack);
+                            }
                         }
                         else
                         {
-                            if (_decor.transform.localPosition != _newPos)
+                            if (_decor.transform.localPosition != _newPos && prefabs.Count > 0)
                             {
                                 _decor = null;
-                                _decor = Instantiate(prefab, transform.position, Quaternion.identity, transform.parent);
+                                
+                                var oriPos = prefabs[0].Prefab.transform.position;
+                                Decor.instance.SetTarget(oriPos);
+                                
+                                _decor = Instantiate(prefabs[0].Prefab, transform.position, Quaternion.identity, transform.parent);
+                                prefabs.RemoveAt(0);
 
-                                _decor.transform.DOLocalMove(_newPos, 0.5f).SetEase(Ease.OutBack);
+                                _decor.transform.DOLocalMoveY(_newPos.y, 0.5f).SetEase(Ease.OutBack);
                             }
                         }
                     }
@@ -56,53 +110,13 @@ namespace _Scripts.Decor
             }
 #endif
 
-#if UNITY_EDITOR
-            if (Input.GetMouseButtonDown(0))
-            {
-                Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag("box_decor"))
-                {
-                    if (!_decor)
-                    {
-                        _decor = Instantiate(prefab, transform.localPosition, Quaternion.identity, transform.parent);
-
-                        _decor.transform.DOLocalMove(_newPos, 0.5f).SetEase(Ease.OutBack);
-                    }
-                    else
-                    {
-                        if (_decor.transform.localPosition != _newPos)
-                        {
-                            _decor = null;
-                            _decor = Instantiate(prefab, transform.localPosition, Quaternion.identity, transform.parent);
-
-                            _decor.transform.DOLocalMove(_newPos, 0.5f).SetEase(Ease.OutBack);
-                        }
-                    }
-                }
-            }
-#endif
         }
 
-        // private void OnMouseDown()
-        // {
-        //     if (!_decor)
-        //     {
-        //         _decor = Instantiate(prefab, transform.position, Quaternion.identity, transform.parent);
-        //
-        //         _decor.transform.DOLocalMove(_newPos, 0.5f).SetEase(Ease.OutBack);
-        //     }
-        //     else
-        //     {
-        //         if (_decor.transform.localPosition != _newPos)
-        //         {
-        //             _decor = null;
-        //             _decor = Instantiate(prefab, transform.position, Quaternion.identity, transform.parent);
-        //
-        //             _decor.transform.DOLocalMove(_newPos, 0.5f).SetEase(Ease.OutBack);
-        //         }
-        //     }
-        // }
+        public void SetDecorationSpawnPos(Vector3 newPos)
+        {
+            _newPos = newPos;
+            _newPos.y += 0.04f;
+        }
     }
 }
