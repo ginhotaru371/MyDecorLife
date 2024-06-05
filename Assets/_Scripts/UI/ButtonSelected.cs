@@ -9,10 +9,9 @@ namespace _Scripts.UI
     public class ButtonSelected : MonoBehaviour
     {
         private Type _type;
-        private Button _button;
-        private Button _buttonSelect;
+        [SerializeField] private Button _button;
+        [SerializeField] private Button _buttonSelect;
         private DecorButton _buttonDecor;
-        private Furniture _furniture;
         [SerializeField] private Texture2D _texture;
         private Color _color;
     
@@ -37,6 +36,10 @@ namespace _Scripts.UI
             {
                 case Type.Wall:
                     ChangeWallColor();
+                    ButtonGroup.instance.Hide();
+                    DecorButtonGroup.instance.ShowPainter();
+                    MousePainter.instance.CheckFill();
+                    ButtonGroup.instance.SelectedButton(this);
                     break;
                 case Type.Floor:
                     ChangeFloor();
@@ -54,22 +57,27 @@ namespace _Scripts.UI
             switch (_type)
             {
                 case Type.Wall:
-                    // ChangeWallColor();
-                    // _buttonDecor.SetBool(true);
+                    ChangeWallColor();
+                    ButtonGroup.instance.Hide();
+                    DecorButtonGroup.instance.ShowPainter();
+                    MousePainter.instance.CheckFill();
+                    ButtonGroup.instance.SelectedButton(this);
                     break;
                 case Type.Floor:
                     ChangeFloor();
                     _buttonDecor.SetBool(true);
+                    DecorButtonGroup.instance.Show();
+                    ButtonGroup.instance.Hide();
                     break;
                 case Type.Furniture:
                     ChangeFurniture();
                     _buttonDecor.SetBool(true);
+                    DecorButtonGroup.instance.Show();
+                    ButtonGroup.instance.Hide();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
-            ButtonGroup.instance.Hide();
         }
 
         private void ChangeFurniture()
@@ -116,13 +124,18 @@ namespace _Scripts.UI
             _buttonDecor = decorButton;
             
             _button.transform.GetChild(1).GetComponent<Image>().sprite = newFur.Image;
-            _furniture = newFur;
-            furnitureObject = NewFurniture.instance.Furniture.Find(x => x.CompareTag(_furniture.Id));
+            furnitureObject = NewFurniture.instance.Furniture.Find(x => x.CompareTag(newFur.Id));
         }
 
         public void SetType(Type type)
         {
             _type = type;
+        }
+
+        public void Selected(bool selected)
+        {
+            _buttonSelect.transform.GetChild(0).gameObject.SetActive(selected);
+            _buttonSelect.transform.GetChild(1).gameObject.SetActive(!selected);
         }
     }
 }

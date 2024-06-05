@@ -28,13 +28,15 @@ namespace _Scripts.UI
             switch (type)
             {
                 case Type.Wall:
+                    DecorButtonGroup.instance.Hide();
                     ButtonGroup.instance.HideCompleteButton();
-                    gameObject.SetActive(false);
+                    ButtonGroup.instance.Hide();
                     ButtonGroup.instance.Show(level.wallColor, this);
                     break;
                 case Type.Floor:
+                    DecorButtonGroup.instance.Hide();
                     ButtonGroup.instance.HideCompleteButton();
-                    gameObject.SetActive(false);
+                    ButtonGroup.instance.Hide();
                     ButtonGroup.instance.Show(level.floorMat, this);
                     break;
                 case Type.Wardrobe:
@@ -47,8 +49,9 @@ namespace _Scripts.UI
                         }
                     }
                 
+                    DecorButtonGroup.instance.Hide();
                     ButtonGroup.instance.HideCompleteButton();
-                    gameObject.SetActive(false);
+                    ButtonGroup.instance.Hide();
                     ButtonGroup.instance.Show(newFurnitures, this);
                     break;
                 case Type.Window:
@@ -60,8 +63,9 @@ namespace _Scripts.UI
                         }
                     }
                 
+                    DecorButtonGroup.instance.Hide();
                     ButtonGroup.instance.HideCompleteButton();
-                    gameObject.SetActive(false);
+                    ButtonGroup.instance.Hide();
                     ButtonGroup.instance.Show(newFurnitures, this);
                     break;
                 default:

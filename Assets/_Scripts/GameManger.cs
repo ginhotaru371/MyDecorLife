@@ -8,7 +8,7 @@ namespace _Scripts
     {
         private AsyncOperationHandle<Level> level;
         private string levelKey = "level1";
-        private GameObject oldRoom;
+        // private GameObject oldRoom;
     
         [SerializeField] private bool _readyToPlay;
         [SerializeField] private bool _trashRemoved;
@@ -48,6 +48,11 @@ namespace _Scripts
             level = Addressables.LoadAssetAsync<Level>(levelKey);
         }
 
+        public void ReadyToPlay(bool ready)
+        {
+            _readyToPlay = ready;
+        }
+
         public void TrashRemoved()
         {
             _trashRemoved = true;
@@ -68,16 +73,21 @@ namespace _Scripts
             _wallPainted = true;
         }
 
-        private void OldRoomSpawn()
+        public void OldRoomSpawn()
         {
             if (level.Status == AsyncOperationStatus.Succeeded)
             {
-                oldRoom = Instantiate(level.Result.oldRoom);
-                oldRoom.name = "Old Room";
+                if (!GameObject.FindGameObjectWithTag("old_room"))
+                {
+                    Debug.Log("Spawned");
                 
-                MousePainter.instance.Init();
+                    var oldRoom = Instantiate(level.Result.oldRoom);
+                    oldRoom.name = "Old Room";
+                
+                    MousePainter.instance.Init();
 
-                _readyToPlay = true;
+                    _readyToPlay = true;
+                }
             }
         }
     }

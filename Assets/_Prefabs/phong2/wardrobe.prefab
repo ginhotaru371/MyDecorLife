@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4108621446292272608}
   - component: {fileID: 5433969868814317773}
   - component: {fileID: 4164363733790743148}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: wardrobe
-  m_TagString: Untagged
+  m_TagString: wardrobe1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

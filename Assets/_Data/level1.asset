@@ -31,13 +31,20 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: 9449562529550df4dafeb65a3e1cc89b, type: 3}
     prefab: {fileID: 477266845983423156, guid: 60b65982c524de84e83694cdbd8c7162, type: 3}
   decorations:
-  - prefab: {fileID: 743220431924101880, guid: 2c08a04c817a3ce4d93796b0ae8cdab7, type: 3}
+  - prefab: {fileID: 6069114754866246872, guid: d717917c71f3cf34f8cd29d1d1d83a8b,
+      type: 3}
     position: {x: 0, y: 0, z: 0}
-  - prefab: {fileID: 1547954844837119120, guid: 0b6a24c97afc1d848aaed70766fe6ecf,
+  - prefab: {fileID: 8445073950804764240, guid: f19bb88b4a815754bb4080c0b82f3978,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 1718534945312669760, guid: bee7f6e1fe781ff4391c6ead781da53e,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 3707544795944581074, guid: a070bd555c5bdf3418e26cb3d067ed7d,
       type: 3}
     position: {x: 0, y: 0, z: 0}
   wallColor:
-  - _color: {r: 1, g: 0.3443396, b: 0.3443396, a: 1}
+  - _color: {r: 1, g: 0.827451, b: 0.93333334, a: 1}
     _image: {fileID: 0}
   - _color: {r: 0.6312891, g: 1, b: 0.2688679, a: 1}
     _image: {fileID: 0}

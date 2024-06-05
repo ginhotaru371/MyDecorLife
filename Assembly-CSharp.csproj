@@ -82,11 +82,13 @@
     <Compile Include="Assets\_Scripts\Decor\NewFurniture.cs" />
     <Compile Include="Assets\_Scripts\Paintable.cs" />
     <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\Vector3Save.cs" />
+    <Compile Include="Assets\_Scripts\Restart.cs" />
     <Compile Include="Assets\BayatGames\SaveGameFree\Examples\Shared\Scripts\SerializerDropdown.cs" />
     <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Serializers\SaveGameJsonSerializer.cs" />
     <Compile Include="Assets\_Scripts\Decor\Decor.cs" />
     <Compile Include="Assets\_Scripts\Spawn.cs" />
     <Compile Include="Assets\_Scripts\Utils\Singleton.cs" />
+    <Compile Include="Assets\_Scripts\TargetFrameRate.cs" />
     <Compile Include="Assets\_Scripts\Trash\Trash_Box.cs" />
     <Compile Include="Assets\_Scripts\UI\DecorButton.cs" />
     <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\SaveGame.cs" />
@@ -104,6 +106,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\BayatGames\SaveGameFree\Documentation\Save Game Free Documentation - Plain Text Version.txt" />
     <None Include="Assets\nTools\UVInspector\Docs\changelog.txt" />
+    <None Include="Assets\_Scripts\Shaders\HyperShaders_Default.shader" />
     <None Include="Assets\nTools\UVInspector\Docs\readme.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\nTools\UVInspector\Shaders\Simple.shader" />
@@ -117,7 +120,6 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />

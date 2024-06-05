@@ -38,7 +38,7 @@ namespace _Scripts
         }
 
         public void InitTextures(Paintable paintable){
-            // paintable.CreateTextures();
+            paintable.CreateTextures();
         
             var mask = paintable.GetMask();
             var uvIslands = paintable.GetUVIslands();

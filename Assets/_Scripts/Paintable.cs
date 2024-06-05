@@ -23,12 +23,6 @@ namespace _Scripts
         public RenderTexture GetSupport() => _supportTexture;
         public Renderer GetRenderer() => _rend;
 
-        private void Start()
-        {
-            CreateTextures();
-            PaintManager.instance.InitTextures(this);
-        }
-
         public void CreateTextures()
         {
             _maskRenderTexture = new RenderTexture(TextureSize, TextureSize, 0);
@@ -59,7 +53,7 @@ namespace _Scripts
             Vector3 target = new Vector3{ x=reference.r , y=reference.g , z=reference.b };
             int numHits = 0;
             const float sqrt3 = 1.73205080757f;
-            for( int i=0 ; i<colors.Length ; i++ )
+            for( int i=0 ; i< colors.Length ; i++ )
             {
                 Vector3 next = new Vector3{ x=colors[i].r , y=colors[i].g , z=colors[i].b };
                 float mag = Vector3.Magnitude( target - next ) / sqrt3;

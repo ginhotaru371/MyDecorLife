@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using _Scripts.Decor;
 using DG.Tweening;
+using UnityEngine;
 using UnityEngine.UI;
 using Type = _Scripts.Decor.Type;
 
@@ -38,8 +39,18 @@ namespace _Scripts.UI
 
         private void CompleteSetup()
         {
-            NewDecoration.instance.SpawnNewBoxDecoration();
-            DecorButtonGroup.instance.Hide();
+            if (PaintManager.instance.Paintable())
+            {
+                PaintManager.instance.Painting(false);
+                Hide();
+                NewFurniture.instance.SpawnNewFurniture();
+                UnSelectedButton();
+            }
+            else
+            {
+                NewDecoration.instance.SpawnNewBoxDecoration();
+                DecorButtonGroup.instance.Hide();
+            }
         }
 
         public void Show(List<Wall> wall, DecorButton decorButton)
@@ -115,14 +126,33 @@ namespace _Scripts.UI
             _btn1.gameObject.SetActive(false);
             _btn2.gameObject.SetActive(false);
             _btn3.gameObject.SetActive(false);
+
+            _btn1.transform.localScale = new Vector3(0, 0, 0);
+            _btn2.transform.localScale = new Vector3(0, 0, 0);
+            _btn3.transform.localScale = new Vector3(0, 0, 0);
+        }
         
-            _btn1.transform.DOScale(0, 0.3f).OnPlay(() =>
+        
+        public void SelectedButton(ButtonSelected btn)
+        {
+            foreach (Transform child in transform)
             {
-                _btn2.transform.DOScale(0, 0.3f).OnPlay(() =>
+                if (child != btn.transform)
                 {
-                    _btn3.transform.DOScale(0, 0.3f);
-                });
-            });
+                    var newBtn = child.GetComponent<ButtonSelected>();
+                    newBtn.Selected(false);
+                    btn.Selected(true);
+                }
+            }
+        }
+
+        public void UnSelectedButton()
+        {
+            foreach (Transform child in transform)
+            {
+                var newBtn = child.GetComponent<ButtonSelected>();
+                newBtn.Selected(false);
+            }
         }
     }
 }

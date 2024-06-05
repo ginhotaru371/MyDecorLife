@@ -39,8 +39,10 @@ namespace _Scripts.Decor
                         {
                             var oriPos = prefabs[0].Prefab.transform.position;
                             Decor.instance.SetTarget(oriPos);
+
+                            var oriRot = prefabs[0].Prefab.transform.rotation;
                             
-                            _decor = Instantiate(prefabs[0].Prefab, transform.position, Quaternion.identity, transform.parent);
+                            _decor = Instantiate(prefabs[0].Prefab, transform.position, oriRot, transform.parent);
                             prefabs.RemoveAt(0);
 
                             _decor.transform.DOLocalMove(_newPos, 0.5f).SetEase(Ease.OutBack);
@@ -55,7 +57,9 @@ namespace _Scripts.Decor
                             var oriPos = prefabs[0].Prefab.transform.position;
                             Decor.instance.SetTarget(oriPos);
                             
-                            _decor = Instantiate(prefabs[0].Prefab, transform.position, Quaternion.identity, transform.parent);
+                            var oriRot = prefabs[0].Prefab.transform.rotation;
+                            
+                            _decor = Instantiate(prefabs[0].Prefab, transform.position, oriRot, transform.parent);
                             prefabs.RemoveAt(0);
                             
                             _decor.transform.DOLocalMove(_newPos, 0.5f).SetEase(Ease.OutBack);
@@ -83,8 +87,9 @@ namespace _Scripts.Decor
                             {
                                 var oriPos = prefabs[0].Prefab.transform.position;
                                 Decor.instance.SetTarget(oriPos);
+                                var oriRot = prefabs[0].Prefab.transform.rotation;
                                 
-                                _decor = Instantiate(prefabs[0].Prefab, transform.position, Quaternion.identity, transform.parent);
+                                _decor = Instantiate(prefabs[0].Prefab, transform.position, oriRot, transform.parent);
                                 prefabs.RemoveAt(0);
 
                                 _decor.transform.DOLocalMoveY(_newPos.y, 0.5f).SetEase(Ease.OutBack);
@@ -98,8 +103,9 @@ namespace _Scripts.Decor
                                 
                                 var oriPos = prefabs[0].Prefab.transform.position;
                                 Decor.instance.SetTarget(oriPos);
+                                var oriRot = prefabs[0].Prefab.transform.rotation;
                                 
-                                _decor = Instantiate(prefabs[0].Prefab, transform.position, Quaternion.identity, transform.parent);
+                                _decor = Instantiate(prefabs[0].Prefab, transform.position, oriRot, transform.parent);
                                 prefabs.RemoveAt(0);
 
                                 _decor.transform.DOLocalMoveY(_newPos.y, 0.5f).SetEase(Ease.OutBack);

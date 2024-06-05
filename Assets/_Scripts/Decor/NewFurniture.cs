@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Scripts.UI;
 using UnityEngine;
 
 namespace _Scripts.Decor
@@ -29,6 +30,8 @@ namespace _Scripts.Decor
 
                 furniture.SetActive(false);
             }
+            
+            ButtonGroup.instance.HideCompleteButton();
             
             DecorButtonGroup.instance.Show();
         }

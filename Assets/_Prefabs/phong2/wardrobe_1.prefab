@@ -83,6 +83,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: wardrobe_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7d70b3eb249cdef45abe82715c22d688,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7d70b3eb249cdef45abe82715c22d688,
+        type: 3}
+      propertyPath: m_TagString
+      value: wardrobe2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

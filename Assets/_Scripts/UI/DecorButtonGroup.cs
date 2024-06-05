@@ -42,6 +42,7 @@ public class DecorButtonGroup : Singleton<DecorButtonGroup>
         }
     }
 
+
     public void Show()
     {
         gameObject.SetActive(true);

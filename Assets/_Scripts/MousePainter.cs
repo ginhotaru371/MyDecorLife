@@ -16,6 +16,8 @@ namespace _Scripts
     
         [SerializeField] private Paintable ps;
 
+        [SerializeField] private bool filled = false;
+
         private void Awake()
         {
             base.KeepAlive(false);
@@ -51,11 +53,13 @@ namespace _Scripts
                 var percent = ps.CalculateFill(paintColor, 0.5f);
                 Debug.Log(percent);
 
-                if (percent > 40.0f)
+                if (percent > 39.0f)
                 {
-                    PaintManager.instance.Painting(false);
-                    ButtonGroup.instance.Hide();
-                    NewFurniture.instance.SpawnNewFurniture();
+                    if (!filled)
+                    {
+                        ButtonGroup.instance.ShowCompleteButton();
+                        filled = true;
+                    }
                 }
             }
 #endif
@@ -93,12 +97,15 @@ namespace _Scripts
                 if (touch.phase == TouchPhase.Ended)
                 {
                     var percent = ps.CalculateFill(paintColor, 0.5f);
+                    Debug.Log(percent);
 
-                    if (percent > 40.0f)
+                    if (percent > 39.0f)
                     {
-                        PaintManager.instance.Painting(false);
-                        ButtonGroup.instance.Hide();
-                        NewFurniture.instance.SpawnNewFurniture();
+                        if (!filled)
+                        {
+                            ButtonGroup.instance.ShowCompleteButton();
+                            filled = true;
+                        }
                     }
                 }
                 
@@ -111,7 +118,6 @@ namespace _Scripts
         {
             var wall = GameObject.FindGameObjectWithTag("wall");
             ps = wall.GetComponent<Paintable>();
-
         }
 
         public void ChangePaintColor(Color color)
@@ -119,8 +125,25 @@ namespace _Scripts
             if (color == paintColor) return;
             paintColor = color;
             PaintManager.instance.InitTextures(ps);
+            filled = false;
         
             PaintManager.instance.Painting(true);
+        }
+
+        public void CheckFill()
+        {
+            filled = false;
+            
+            var percent = ps.CalculateFill(paintColor, 0.5f);
+
+            if (percent > 39.0f)
+            {
+                if (!filled)
+                {
+                    ButtonGroup.instance.ShowCompleteButton();
+                    filled = true;
+                }
+            }
         }
     }
 }
