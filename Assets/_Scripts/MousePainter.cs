@@ -15,6 +15,7 @@ namespace _Scripts
         public float hardness = 1;
     
         [SerializeField] private Paintable ps;
+        [SerializeField] private GameObject wall;
 
         [SerializeField] private bool filled = false;
 
@@ -116,7 +117,7 @@ namespace _Scripts
 
         public void Init()
         {
-            var wall = GameObject.FindGameObjectWithTag("wall");
+            wall = GameObject.FindGameObjectWithTag("wall");
             ps = wall.GetComponent<Paintable>();
         }
 

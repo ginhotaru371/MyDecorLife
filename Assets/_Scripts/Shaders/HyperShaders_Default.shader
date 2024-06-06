@@ -1,4 +1,4 @@
-Shader "HyperShaders/Default" {
+Shader "HyperShaders/DefaultURP" {
 	Properties {
 		_MainColor ("Main Color", Vector) = (1,1,1,1)
 		_ShadowColor ("Shadow Color", Vector) = (0.5,0.5,0.5,1)
@@ -44,27 +44,84 @@ Shader "HyperShaders/Default" {
 		[Toggle(SF_SCROLL_UV)] _SF_SCROLL_UV ("Scroll UV", Float) = 0
 		_ScrollUVSpeed ("Scroll UV Speed", Vector) = (0,0,0,0)
 	}
-	//DummyShaderTextExporter
-	SubShader{
-		Tags { "RenderType"="Opaque" }
+	SubShader {
+		Tags { "RenderPipeline" = "UniversalRenderPipeline" }
 		LOD 200
-		CGPROGRAM
-#pragma surface surf Standard
-#pragma target 3.0
 
-		sampler2D _MainTex;
-		struct Input
-		{
-			float2 uv_MainTex;
-		};
+		Pass {
+			Name "ForwardLit"
+			Tags { "LightMode" = "UniversalForward" }
 
-		void surf(Input IN, inout SurfaceOutputStandard o)
-		{
-			fixed4 c = tex2D(_MainTex, IN.uv_MainTex);
-			o.Albedo = c.rgb;
-			o.Alpha = c.a;
+			HLSLPROGRAM
+			#pragma vertex vert
+			#pragma fragment frag
+			#pragma multi_compile _ _SF_VERTEX_COLOR
+			#pragma multi_compile _ _SF_MAIN_TEXTURE
+			#pragma multi_compile _ _SF_NOT_TRANSPARENT_MAIN_TEXTURE
+			#pragma multi_compile _ _SF_NORMAL_TEXTURE
+			#pragma multi_compile _ _SF_DIFFUSE
+			#pragma multi_compile _ _SF_DIFFUSE_RAMP
+			#pragma multi_compile _ _SF_RIM_LIGHT
+			#pragma multi_compile _ _SF_SPECULAR
+			#pragma multi_compile _ _SF_REFLECTION
+			#pragma multi_compile _ _SF_EMISSION
+			#pragma multi_compile _ _SF_COLOR_LERP
+			#pragma multi_compile _ _SF_PAINT_LAYER
+			#pragma multi_compile _ _SF_DITHERING_TRANSPARENCY
+			#pragma multi_compile _ _SF_COLOR_FILL2
+			#pragma multi_compile _ _SF_COLOR_FILL3
+			#pragma multi_compile _ _SF_FILL_ALPHA_BY_COLOR
+			#pragma multi_compile _ _SF_SCROLL_UV
+
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+
+			struct Attributes {
+				float4 vertex : POSITION;
+				float2 uv : TEXCOORD0;
+				#ifdef _SF_VERTEX_COLOR
+				float4 color : COLOR;
+				#endif
+			};
+
+			struct Varyings {
+				float4 position : SV_POSITION;
+				float2 uv : TEXCOORD0;
+				#ifdef _SF_VERTEX_COLOR
+				float4 color : COLOR;
+				#endif
+			};
+
+			sampler2D _MainTex;
+			float4 _MainColor;
+			#ifdef _SF_VERTEX_COLOR
+			float _SF_VERTEX_COLOR;
+			#endif
+
+			Varyings vert(Attributes v) {
+				Varyings o;
+				o.position = TransformObjectToHClip(v.vertex);
+				o.uv = v.uv;
+				#ifdef _SF_VERTEX_COLOR
+				o.color = v.color;
+				#endif
+				return o;
+			}
+
+			float4 frag(Varyings i) : SV_Target {
+				float4 col = float4(1, 1, 1, 1);
+				#ifdef _SF_MAIN_TEXTURE
+				col *= SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv);
+				#endif
+				#ifdef _SF_VERTEX_COLOR
+				col *= i.color;
+				#endif
+				col *= _MainColor;
+				return col;
+			}
+
+			ENDHLSL
 		}
-		ENDCG
 	}
-	Fallback "Diffuse"
+	Fallback "Hidden/InternalErrorShader"
 }

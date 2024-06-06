@@ -80,7 +80,7 @@ namespace _Scripts.Trash
                     if (hit.collider.CompareTag("box"))
                     {
                         var newPos = _box.transform.localPosition;
-                        newPos.y = newPos.y + 0.02f;
+                        newPos.y = newPos.y + 0.08f;
                         _selectedObject.transform.localPosition = newPos;
                         // BlurObject(1.0f);
                         _placed = true;
@@ -104,6 +104,7 @@ namespace _Scripts.Trash
                 if (_placed)
                 {
                     Destroy(_selectedObject.gameObject);
+                    TrashBox.instance.Scale();
                     _selectedObject = null;
                     _placed = false;
                 }
@@ -263,8 +264,6 @@ namespace _Scripts.Trash
 
         public void InteriorAvailableToRemove()
         {
-            Debug.Log(gameObject.transform.childCount);
-            
             if (gameObject.transform.childCount > 1)
             {
                 foreach (Transform child in gameObject.transform)
