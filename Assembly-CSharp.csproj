@@ -57,6 +57,7 @@
     <Compile Include="Assets\_Scripts\Trash\Interior_Remove.cs" />
     <Compile Include="Assets\BayatGames\SaveGameFree\Examples\Save Rotation\ExampleSaveRotation.cs" />
     <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Serializers\SaveGameBinarySerializer.cs" />
+    <Compile Include="Assets\_Scripts\CameraMovement.cs" />
     <Compile Include="Assets\_Scripts\Decor\NewDecoration.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\_Scripts\Decor\Wall.cs" />
@@ -864,20 +865,20 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:\Users\PC\Unity\Project\My Decor Life\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Profiling.Core">
-      <HintPath>C:\Users\PC\Unity\Project\My Decor Life\Library\ScriptAssemblies\Unity.Profiling.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Notifications.Unified">
-      <HintPath>C:\Users\PC\Unity\Project\My Decor Life\Library\ScriptAssemblies\Unity.Notifications.Unified.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
       <HintPath>C:\Users\PC\Unity\Project\My Decor Life\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Profiling.Core">
+      <HintPath>C:\Users\PC\Unity\Project\My Decor Life\Library\ScriptAssemblies\Unity.Profiling.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.HighDefinition.Editor">
       <HintPath>C:\Users\PC\Unity\Project\My Decor Life\Library\ScriptAssemblies\Unity.RenderPipelines.HighDefinition.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
       <HintPath>C:\Users\PC\Unity\Project\My Decor Life\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Notifications.Unified">
+      <HintPath>C:\Users\PC\Unity\Project\My Decor Life\Library\ScriptAssemblies\Unity.Notifications.Unified.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AdaptivePerformance.Samsung.Android">
       <HintPath>C:\Users\PC\Unity\Project\My Decor Life\Library\ScriptAssemblies\Unity.AdaptivePerformance.Samsung.Android.dll</HintPath>
@@ -930,11 +931,11 @@
     <Reference Include="Unity.AdaptivePerformance.Samsung.Android.Editor">
       <HintPath>C:\Users\PC\Unity\Project\My Decor Life\Library\ScriptAssemblies\Unity.AdaptivePerformance.Samsung.Android.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.AdaptivePerformance.Profiler.Editor">
-      <HintPath>C:\Users\PC\Unity\Project\My Decor Life\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.2D.Tilemap.Extras">
       <HintPath>C:\Users\PC\Unity\Project\My Decor Life\Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AdaptivePerformance.Profiler.Editor">
+      <HintPath>C:\Users\PC\Unity\Project\My Decor Life\Library\ScriptAssemblies\Unity.AdaptivePerformance.Profiler.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>C:\Users\PC\Unity\Project\My Decor Life\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
@@ -1038,6 +1039,10 @@
       <Project>{df5a20a6-78c4-8a94-59da-d99164ddf731}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
+    <ProjectReference Include="UtilitiesEditor.csproj">
+      <Project>{9b675a92-72d0-ac44-2194-c06ade5c1f03}</Project>
+      <Name>UtilitiesEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="Bayat.Games.Utilities.SceneManager.Editor.csproj">
       <Project>{0662473a-6c9d-52f1-2cef-b3e7228548a5}</Project>
       <Name>Bayat.Games.Utilities.SceneManager.Editor</Name>
@@ -1050,9 +1055,29 @@
       <Project>{0fe8d673-d18a-c44d-105e-e26fd0db2a8b}</Project>
       <Name>PaintCore</Name>
     </ProjectReference>
+    <ProjectReference Include="CopyrightNoticeEditor.csproj">
+      <Project>{6bdad5c5-e759-f437-0207-a2a019db13a8}</Project>
+      <Name>CopyrightNoticeEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Utilities.csproj">
+      <Project>{5db06d0d-6adc-f920-dfc0-3555a8697530}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="SimpleInspectorAttributes.csproj">
+      <Project>{406a303a-69c8-3334-bc8e-e47365b5126b}</Project>
+      <Name>SimpleInspectorAttributes</Name>
+    </ProjectReference>
+    <ProjectReference Include="SimpleZoomEditor.csproj">
+      <Project>{6e28a7aa-3578-53ce-bceb-d591a431828c}</Project>
+      <Name>SimpleZoomEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="merge-mesh-unity.Editor.csproj">
       <Project>{c3bd0843-fb7d-d80b-86a3-c22aba15ab7e}</Project>
       <Name>merge-mesh-unity.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="SimpleZoom.csproj">
+      <Project>{809a7ab6-a4d4-fb99-f5e1-27ad2a15156e}</Project>
+      <Name>SimpleZoom</Name>
     </ProjectReference>
     <ProjectReference Include="PaintIn3D.csproj">
       <Project>{6b31f713-dd54-a070-f482-3547b500f359}</Project>
@@ -1061,6 +1086,10 @@
     <ProjectReference Include="CW.Common.csproj">
       <Project>{5e1a0b3f-392d-ec8e-d197-354de84bd91d}</Project>
       <Name>CW.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="SimpleInspectorAttributesEditor.csproj">
+      <Project>{a4ddc256-04fe-30f2-0a25-23c3d2a99820}</Project>
+      <Name>SimpleInspectorAttributesEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

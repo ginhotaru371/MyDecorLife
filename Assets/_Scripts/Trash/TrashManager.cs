@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -9,18 +10,23 @@ namespace _Scripts.Trash
         [SerializeField] private Camera mainCamera;
 
         private AsyncOperationHandle<Level> level;
-    
-        private GameObject _selectedObject;
-        private Material _mat;
-        private GameObject _box;
 
-        private LayerMask _maskWall;
-        private Vector3 _offset;
-        private Vector3 _originPos;
+        private const float NormalAlpha = 1.0f;
+        private const float BlurAlpha = 0.7f;
     
-        private bool _placed;
+        private GameObject selectedObject;
+        private Renderer rend;
+        private Material mat;
+        private GameObject box;
 
-        private readonly int _color1 = Shader.PropertyToID("_Color");
+        private LayerMask maskWall;
+        private Vector3 offset;
+        private Vector3 originPos;
+    
+        private bool placed;
+        private bool dragging;
+
+        private readonly int opacity = Shader.PropertyToID("_Opacity");
 
         public override void Awake()
         {
@@ -34,15 +40,15 @@ namespace _Scripts.Trash
         {
             mainCamera = Camera.main;
             FindBox();
-            _maskWall = LayerMask.GetMask("Wall", "Box");
+            maskWall = LayerMask.GetMask("Wall", "Box");
             level = Addressables.LoadAssetAsync<Level>("level1");
         }
 
         private void FindBox()
         {
-            if (!_box)
+            if (!box)
             {
-                _box = GameObject.FindGameObjectWithTag("box");
+                box = GameObject.FindGameObjectWithTag("box");
             }
         }
 
@@ -54,65 +60,68 @@ namespace _Scripts.Trash
             {
                 var hit = Cast();
             
-                if (!_selectedObject)
+                if (!selectedObject)
                 {
                     if (hit.collider)
                     {
                         if (!hit.collider.CompareTag("trash")) return;
-    
-                        _selectedObject = hit.collider.gameObject;
-                        _mat = _selectedObject.GetComponent<Renderer>().material;
-                        _offset = _selectedObject.transform.position - GetMousePos();
-                        _originPos = _selectedObject.transform.position;
-                        // BlurObject(0.5f);
+
+                        dragging = true;
+                        selectedObject = hit.collider.gameObject;
+                        rend = selectedObject.GetComponent<Renderer>();
+                        offset = selectedObject.transform.position - GetMousePos();
+                        originPos = selectedObject.transform.position;
+                        BlurObject(BlurAlpha);
                     }
                 }
             }
     
-            if (Input.GetMouseButton(0) && _selectedObject)
+            if (Input.GetMouseButton(0) && selectedObject)
             {
                 var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-                Physics.Raycast(ray, out var hit, Mathf.Infinity, _maskWall);
+                Physics.Raycast(ray, out var hit, Mathf.Infinity, maskWall);
             
                 if (hit.collider)
                 {
                     if (hit.collider.CompareTag("box"))
                     {
-                        var newPos = _box.transform.localPosition;
+                        var newPos = box.transform.localPosition;
                         newPos.y = newPos.y + 0.08f;
-                        _selectedObject.transform.localPosition = newPos;
-                        // BlurObject(1.0f);
-                        _placed = true;
+                        selectedObject.transform.localPosition = newPos;
+                        BlurObject(NormalAlpha);
+                        placed = true;
                     }
                     else
                     {
-                        // BlurObject(0.5f);
-                        _placed = false;
+                        BlurObject(BlurAlpha);
+                        placed = false;
                     }
                 }
 
-                if (!_placed)
+                if (!placed)
                 {
-                    _selectedObject.transform.position = GetMousePos() + _offset;
+                    selectedObject.transform.position = GetMousePos() + offset;
                 }
             }
     
             if (Input.GetMouseButtonUp(0))
             {
-                if (!_selectedObject) return;
-                if (_placed)
+                if (!selectedObject) return;
+
+                dragging = false;
+                if (placed)
                 {
-                    Destroy(_selectedObject.gameObject);
+                    Destroy(selectedObject.gameObject);
                     TrashBox.instance.Scale();
-                    _selectedObject = null;
-                    _placed = false;
+                    selectedObject = null;
+                    placed = false;
                 }
                 else
                 {
-                    // BlurObject(1.0f);
-                    _selectedObject.transform.position = _originPos;
-                    _selectedObject = null;
+                    BlurObject(NormalAlpha);
+                    selectedObject.transform.position = originPos;
+                    selectedObject = null;
                 }
             }
 #endif
@@ -127,64 +136,67 @@ namespace _Scripts.Trash
                 {
                     var hit = Cast();
             
-                    if (!_selectedObject)
+                    if (!selectedObject)
                     {
                         if (hit.collider)
                         {
                             if (!hit.collider.CompareTag("trash")) return;
-    
-                            _selectedObject = hit.collider.gameObject;
-                            _mat = _selectedObject.GetComponent<Renderer>().material;
-                            _offset = _selectedObject.transform.position - GetMousePos();
-                            _originPos = _selectedObject.transform.position;
-                            // BlurObject(0.5f);
+
+                            dragging = true;
+                            selectedObject = hit.collider.gameObject;
+                            rend = selectedObject.GetComponent<Renderer>();
+                            offset = selectedObject.transform.position - GetMousePos();
+                            originPos = selectedObject.transform.position;
+                            BlurObject(BlurAlpha);
                         }
                     }
                 }
                 
-                if (touch.phase == TouchPhase.Moved && _selectedObject)
+                if (touch.phase == TouchPhase.Moved && selectedObject)
                 {
                     var ray = mainCamera.ScreenPointToRay(touch.position);
 
-                    Physics.Raycast(ray, out var hit, Mathf.Infinity, _maskWall);
+                    Physics.Raycast(ray, out var hit, Mathf.Infinity, maskWall);
             
                     if (hit.collider)
                     {
                         if (hit.collider.CompareTag("box"))
                         {
-                            var newPos = _box.transform.localPosition;
+                            var newPos = box.transform.localPosition;
                             newPos.y = newPos.y + 0.02f;
-                            _selectedObject.transform.localPosition = newPos;
-                            // BlurObject(1.0f);
-                            _placed = true;
+                            selectedObject.transform.localPosition = newPos;
+                            BlurObject(NormalAlpha);
+                            placed = true;
                         }
                         else
                         {
-                            // BlurObject(0.5f);
-                            _placed = false;
+                            BlurObject(BlurAlpha);
+                            placed = false;
                         }
                     }
 
-                    if (!_placed)
+                    if (!placed)
                     {
-                        _selectedObject.transform.position = GetMousePos() + _offset;
+                        selectedObject.transform.position = GetMousePos() + offset;
                     }
                 }
     
                 if (touch.phase == TouchPhase.Ended)
                 {
-                    if (!_selectedObject) return;
-                    if (_placed)
+                    if (!selectedObject) return;
+
+                    dragging = false;
+                    if (placed)
                     {
-                        Destroy(_selectedObject.gameObject);
-                        _selectedObject = null;
-                        _placed = false;
+                        Destroy(selectedObject.gameObject);
+                        selectedObject = null;
+                        placed = false;
                     }
                     else
                     {
-                        // BlurObject(1.0f);
-                        _selectedObject.transform.position = _originPos;
-                        _selectedObject = null;
+                        BlurObject(NormalAlpha);
+                        selectedObject.transform.position = originPos;
+                        selectedObject = null;
                     }
                 }
             }
@@ -243,9 +255,7 @@ namespace _Scripts.Trash
 
         private void BlurObject(float alpha)
         {
-            var newColor = _mat.color;
-            newColor.a = alpha;
-            _mat.SetColor(_color1, newColor);
+           rend.material.SetFloat(opacity, alpha);
         }
 
         private bool TrashAvailableToRemove()
@@ -281,6 +291,11 @@ namespace _Scripts.Trash
                 DecorButtonGroup.instance.ShowPainter();
                 GameManger.instance.InteriorRemoved();
             }
+        }
+
+        public bool Dragging()
+        {
+            return dragging;
         }
     }
 }

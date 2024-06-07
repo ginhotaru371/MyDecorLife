@@ -675,7 +675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 1.2
   m_ReferenceResolution: {x: 1080, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -742,6 +742,7 @@ GameObject:
   - component: {fileID: 330585547}
   - component: {fileID: 330585544}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585550}
   - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
@@ -766,13 +767,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.272532, y: -0.4030582, z: 0.12708373, w: 0.86436117}
-  m_LocalPosition: {x: 9.76, y: 7.4, z: -7.16}
+  m_LocalRotation: {x: 0.30070576, y: 0, z: 0, w: 0.953717}
+  m_LocalPosition: {x: 9.75, y: 7.4, z: -7.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1968074605}
-  m_LocalEulerAnglesHint: {x: 35, y: -50, z: 0}
+  m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
 --- !u!20 &330585547
 Camera:
   m_ObjectHideFlags: 0
@@ -881,6 +882,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2410309305c4664a314e27caa23b259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &330585550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9088a3a648ff2ba48b5f9ccd6b7ef172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCamera: {fileID: 330585547}
 --- !u!1 &390453744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,13 +1135,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494556548}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.39716026, y: 0.5175545, z: -0.16174865, w: 0.74043125}
-  m_LocalPosition: {x: -2.11, y: 2.23, z: -0.34}
+  m_LocalRotation: {x: 0.7267269, y: 0.49745455, z: -0.021608002, w: 0.473223}
+  m_LocalPosition: {x: 7.91, y: 5.02, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1968074605}
-  m_LocalEulerAnglesHint: {x: 49.075, y: 76.87, z: 15.184}
+  m_LocalEulerAnglesHint: {x: 45.178, y: 141.438, z: 94.654}
 --- !u!114 &494556550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1164,9 +1178,9 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 20
-  m_Range: 100
-  m_SpotAngle: 24.670637
-  m_InnerSpotAngle: 21.80208
+  m_Range: 11
+  m_SpotAngle: 24.670635
+  m_InnerSpotAngle: 24.670635
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
@@ -1202,7 +1216,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1374,13 +1388,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622258333}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.368303, y: 0.35777292, z: -0.83134925, w: -0.21262626}
+  m_LocalRotation: {x: -0.6363402, y: 0.40960374, z: -0.6495074, w: -0.07372999}
   m_LocalPosition: {x: -1.06, y: 0, z: -4.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1968074605}
-  m_LocalEulerAnglesHint: {x: 48.72, y: 44.234, z: -187.84}
+  m_LocalEulerAnglesHint: {x: 38.749, y: 100.746, z: -146.933}
 --- !u!114 &622258335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1416,7 +1430,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.990566, g: 0.97448045, b: 0.82702917, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1455,7 +1469,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1698,6 +1712,7 @@ GameObject:
   - component: {fileID: 707161891}
   - component: {fileID: 707161892}
   - component: {fileID: 707161893}
+  - component: {fileID: 707161894}
   m_Layer: 0
   m_Name: Interior Camera
   m_TagString: Untagged
@@ -1713,13 +1728,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707161887}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.272532, y: -0.4030582, z: 0.12708373, w: 0.86436117}
-  m_LocalPosition: {x: 9.76, y: 7.4, z: -7.16}
+  m_LocalRotation: {x: 0.30070576, y: 0, z: 0, w: 0.953717}
+  m_LocalPosition: {x: 9.75, y: 7.4, z: -7.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1968074605}
-  m_LocalEulerAnglesHint: {x: 35, y: -50, z: 0}
+  m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
 --- !u!20 &707161892
 Camera:
   m_ObjectHideFlags: 0
@@ -1815,6 +1830,19 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &707161894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707161887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9088a3a648ff2ba48b5f9ccd6b7ef172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCamera: {fileID: 707161892}
 --- !u!1 &785758410
 GameObject:
   m_ObjectHideFlags: 0
@@ -2850,13 +2878,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425681212}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4979921, y: -0.25131926, z: -0.14653242, w: 0.8169277}
-  m_LocalPosition: {x: 6.1, y: 5.7, z: -3.06}
+  m_LocalRotation: {x: 0.6788114, y: -0, z: -0, w: 0.7343128}
+  m_LocalPosition: {x: 9.75, y: 15.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1968074605}
-  m_LocalEulerAnglesHint: {x: 47.731, y: -55.839, z: -46.726}
+  m_LocalEulerAnglesHint: {x: 85.502, y: 0, z: 0}
 --- !u!114 &1425681214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2892,10 +2920,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 20
-  m_Range: 100
+  m_Intensity: 75.5
+  m_Range: 72.2
   m_SpotAngle: 57.567238
-  m_InnerSpotAngle: 34.567238
+  m_InnerSpotAngle: 46.293957
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2

@@ -38,12 +38,16 @@ namespace _Scripts
                 if (Physics.Raycast(ray, out hit, 100.0f)){
                     if (hit.collider)
                     {
-                        Debug.DrawRay(ray.origin, hit.point - ray.origin, Color.red);
-                        
-                        transform.position = hit.point;
-                        Paintable p = hit.collider.GetComponent<Paintable>();
-                        if(ps != null){
-                            PaintManager.instance.Paint(p, hit.point, radius, hardness, strength, paintColor);
+                        if (hit.collider.CompareTag("wall"))
+                        {
+                            Debug.DrawRay(ray.origin, hit.point - ray.origin, Color.red);
+
+                            transform.position = hit.point;
+                            Paintable p = hit.collider.GetComponent<Paintable>();
+                            if (ps != null)
+                            {
+                                PaintManager.instance.Paint(p, hit.point, radius, hardness, strength, paintColor);
+                            }
                         }
                     }
                 }
