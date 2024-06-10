@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: level1
   m_EditorClassIdentifier: 
   oldRoom: {fileID: 5975769098530071669, guid: 1d58e944aed872746878bb4d2970c12e, type: 3}
-  boxDecoration: {fileID: 6645865353784612883, guid: bd2f2b34755003243ad237b7995f6eaa,
+  boxDecoration: {fileID: 8622735514267887925, guid: fa8086716917d6c46ae60da07383b963,
     type: 3}
   furnitures:
   - id: wardrobe1
@@ -29,18 +29,22 @@ MonoBehaviour:
   - id: wardrobe3
     type: 3
     image: {fileID: 21300000, guid: 9449562529550df4dafeb65a3e1cc89b, type: 3}
-    prefab: {fileID: 477266845983423156, guid: 60b65982c524de84e83694cdbd8c7162, type: 3}
-  decorations:
-  - prefab: {fileID: 6069114754866246872, guid: d717917c71f3cf34f8cd29d1d1d83a8b,
+    prefab: {fileID: 8618497524654236352, guid: 60b65982c524de84e83694cdbd8c7162,
       type: 3}
-    position: {x: 0, y: 0, z: 0}
+  decorations:
   - prefab: {fileID: 8445073950804764240, guid: f19bb88b4a815754bb4080c0b82f3978,
       type: 3}
     position: {x: 0, y: 0, z: 0}
   - prefab: {fileID: 1718534945312669760, guid: bee7f6e1fe781ff4391c6ead781da53e,
       type: 3}
     position: {x: 0, y: 0, z: 0}
-  - prefab: {fileID: 3707544795944581074, guid: a070bd555c5bdf3418e26cb3d067ed7d,
+  - prefab: {fileID: 6835559705583119468, guid: ec534a3cc1e849d49a70c473a8c17f11,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 6069114754866246872, guid: d717917c71f3cf34f8cd29d1d1d83a8b,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 3733604762904127709, guid: ce9d202938d2ac248a22b20c7c6e8970,
       type: 3}
     position: {x: 0, y: 0, z: 0}
   wallColor:

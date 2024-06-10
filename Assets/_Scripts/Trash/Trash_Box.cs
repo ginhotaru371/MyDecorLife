@@ -51,7 +51,7 @@ namespace _Scripts.Trash
         private void Clean()
         {
             btn.gameObject.SetActive(false);
-            transform.DOLocalMove(_newPos, 0.5f).SetEase(Ease.InOutBack).OnComplete(()=>
+            transform.DOLocalMove(_newPos, 0.5f).SetEase(Ease.InBack).OnComplete(()=>
             {
                 GameManger.instance.TrashRemoved();
                 TrashManager.instance.InteriorAvailableToRemove();

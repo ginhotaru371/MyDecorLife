@@ -16,10 +16,12 @@ namespace _Scripts.Decor
             rend = GetComponent<MeshRenderer>();
         }
     
-        public void Change(Texture2D texture)
+        public Transform Change(Texture2D texture)
         {
             rend.material.SetTexture(BaseColorMap, texture);
             Debug.Log("Floor Changed");
+
+            return this.transform;
         }
     }
 }

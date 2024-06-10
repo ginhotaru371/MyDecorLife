@@ -22,6 +22,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d503eda060bf9c94cbc96efbc6e7ae2b
+    m_Address: FxPoofForHome
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d971098426d355f4082c1f5285e92f51
+    m_Address: FxMagiclesForHome
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 37812c9a257174f47902f020a4aad02d, type: 2}
   m_SchemaSet:

@@ -1,6 +1,8 @@
 using System;
 using _Scripts.Decor;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 using Type = _Scripts.Decor.Type;
 
@@ -14,6 +16,8 @@ namespace _Scripts.UI
         private DecorButton _buttonDecor;
         [SerializeField] private Texture2D _texture;
         private Color _color;
+
+        private AsyncOperationHandle<GameObject> fxMagicles;
     
         public GameObject furnitureObject;
 
@@ -28,6 +32,8 @@ namespace _Scripts.UI
         {
             _button.onClick.AddListener(Events);
             _buttonSelect.onClick.AddListener(SelectedEvents);
+
+            fxMagicles = Addressables.LoadAssetAsync<GameObject>("FxMagiclesForHome");
         }
 
         private void Events()
@@ -91,11 +97,13 @@ namespace _Scripts.UI
             }
         
             furnitureObject.SetActive(true);
+            furnitureObject.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+            // SelectedFX(furnitureObject.transform);
         }
 
         private void ChangeFloor()
         {
-            FloorChange.instance.Change(_texture);
+            SelectedFX(FloorChange.instance.Change(_texture));
         }
 
         private void ChangeWallColor()
@@ -136,6 +144,12 @@ namespace _Scripts.UI
         {
             _buttonSelect.transform.GetChild(0).gameObject.SetActive(selected);
             _buttonSelect.transform.GetChild(1).gameObject.SetActive(!selected);
+        }
+
+        private void SelectedFX(Transform pos)
+        {
+            var fxProofObject = Instantiate(fxMagicles.Result, pos.position, Quaternion.identity, pos);
+            fxProofObject.GetComponent<ParticleSystem>().Play();
         }
     }
 }

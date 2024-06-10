@@ -67,6 +67,7 @@ namespace _Scripts.Trash
                         if (!hit.collider.CompareTag("trash")) return;
 
                         dragging = true;
+                        CameraMovement.instance.SetBool(false);
                         selectedObject = hit.collider.gameObject;
                         rend = selectedObject.GetComponent<Renderer>();
                         offset = selectedObject.transform.position - GetMousePos();
@@ -110,9 +111,10 @@ namespace _Scripts.Trash
                 if (!selectedObject) return;
 
                 dragging = false;
+                CameraMovement.instance.SetBool(true);
                 if (placed)
                 {
-                    Destroy(selectedObject.gameObject);
+                    RemoveTrash(selectedObject);
                     TrashBox.instance.Scale();
                     selectedObject = null;
                     placed = false;
@@ -143,6 +145,7 @@ namespace _Scripts.Trash
                             if (!hit.collider.CompareTag("trash")) return;
 
                             dragging = true;
+                            CameraMovement.instance.SetBool(false);
                             selectedObject = hit.collider.gameObject;
                             rend = selectedObject.GetComponent<Renderer>();
                             offset = selectedObject.transform.position - GetMousePos();
@@ -186,9 +189,11 @@ namespace _Scripts.Trash
                     if (!selectedObject) return;
 
                     dragging = false;
+                    CameraMovement.instance.SetBool(true);
                     if (placed)
                     {
-                        Destroy(selectedObject.gameObject);
+                        RemoveTrash(selectedObject);
+                        TrashBox.instance.Scale();
                         selectedObject = null;
                         placed = false;
                     }
@@ -286,8 +291,6 @@ namespace _Scripts.Trash
             }
             else
             {
-                // ButtonGroup.instance.Show(level.Result.wallColor);
-                // NewFurniture.instance.SpawnNewFurniture();
                 DecorButtonGroup.instance.ShowPainter();
                 GameManger.instance.InteriorRemoved();
             }
@@ -296,6 +299,14 @@ namespace _Scripts.Trash
         public bool Dragging()
         {
             return dragging;
+        }
+
+        private void RemoveTrash(GameObject trash)
+        {
+            trash.transform.DOScale(0, 0.3f).SetEase(Ease.InBack).OnComplete(() =>
+            {
+                Destroy(trash);
+            });
         }
     }
 }

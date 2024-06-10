@@ -84,5 +84,10 @@ namespace _Scripts
             _extendIslandsRenderTexture?.Release();
             _supportTexture?.Release();
         }
+
+        public void PaintComplete()
+        {
+            transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+        }
     }
 }

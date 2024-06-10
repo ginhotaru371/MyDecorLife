@@ -41,6 +41,7 @@ namespace _Scripts.UI
         {
             if (PaintManager.instance.Paintable())
             {
+                MousePainter.instance.PaintComplete();
                 PaintManager.instance.Painting(false);
                 Hide();
                 NewFurniture.instance.SpawnNewFurniture();

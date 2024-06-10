@@ -49,6 +49,7 @@ namespace _Scripts.Decor
                     {
                         if (!hit.collider.CompareTag("decor")) return;
     
+                        CameraMovement.instance.SetBool(false);
                         _selectedObject = hit.collider.gameObject;
                         _offset = _selectedObject.transform.position - GetMousePos();
                         _originPos = _selectedObject.transform.position;
@@ -60,7 +61,7 @@ namespace _Scripts.Decor
             {
                 var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-                Physics.Raycast(ray, out var hit, Mathf.Infinity);
+                Physics.Raycast(ray, out var hit, Mathf.Infinity, _maskWall);
 
                 if (Vector3.Distance(hit.point, _target) < 0.5f)
                 {
@@ -78,6 +79,8 @@ namespace _Scripts.Decor
             if (Input.GetMouseButtonUp(0))
             {
                 if (!_selectedObject) return;
+                
+                CameraMovement.instance.SetBool(true);
                 if (_placed)
                 {
                     _selectedObject = null;
@@ -107,6 +110,7 @@ namespace _Scripts.Decor
                         {
                             if (!hit.collider.CompareTag("decor")) return;
     
+                            CameraMovement.instance.SetBool(false);
                             _selectedObject = hit.collider.gameObject;
                             _offset = _selectedObject.transform.position - GetMousePos();
                             _originPos = _selectedObject.transform.position;
@@ -118,7 +122,7 @@ namespace _Scripts.Decor
                 {
                     var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-                    Physics.Raycast(ray, out var hit, Mathf.Infinity);
+                    Physics.Raycast(ray, out var hit, Mathf.Infinity, _maskWall);
 
                     if (Vector3.Distance(hit.point, _target) < 0.5f)
                     {
@@ -136,6 +140,8 @@ namespace _Scripts.Decor
                 if (touch.phase == TouchPhase.Ended)
                 {
                     if (!_selectedObject) return;
+                    
+                    CameraMovement.instance.SetBool(true);
                     if (_placed)
                     {
                         _selectedObject = null;

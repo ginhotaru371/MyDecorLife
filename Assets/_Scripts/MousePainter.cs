@@ -150,5 +150,12 @@ namespace _Scripts
                 }
             }
         }
+
+        public void PaintComplete()
+        {
+            ps.PaintComplete();
+        }
+        
+        
     }
 }
