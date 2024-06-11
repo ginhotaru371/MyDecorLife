@@ -49,6 +49,7 @@ namespace _Scripts.UI
             }
             else
             {
+                NewFurniture.instance.RemoveUselessFurniture();
                 NewDecoration.instance.SpawnNewBoxDecoration();
                 DecorButtonGroup.instance.Hide();
             }
@@ -140,9 +141,12 @@ namespace _Scripts.UI
             {
                 if (child != btn.transform)
                 {
-                    var newBtn = child.GetComponent<ButtonSelected>();
-                    newBtn.Selected(false);
-                    btn.Selected(true);
+                    if (child.GetComponent<ButtonSelected>())
+                    {
+                        var newBtn = child.GetComponent<ButtonSelected>();
+                        newBtn.Selected(false);
+                        btn.Selected(true);
+                    }
                 }
             }
         }
@@ -151,8 +155,11 @@ namespace _Scripts.UI
         {
             foreach (Transform child in transform)
             {
-                var newBtn = child.GetComponent<ButtonSelected>();
-                newBtn.Selected(false);
+                if (child.GetComponent<ButtonSelected>())
+                {
+                    var newBtn = child.GetComponent<ButtonSelected>();
+                    newBtn.Selected(false);
+                }
             }
         }
     }

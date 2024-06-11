@@ -3,7 +3,27 @@ guid: e6c206620f55c4f4e9fdc96c72ef87bc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color
+    second: {fileID: 2100000, guid: 9f8379b63432d144c800211ae46cf279, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor3_tx
+    second: {fileID: 2100000, guid: 06f0918e732959f4bac6310b125ade0c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stripped2
+    second: {fileID: 2100000, guid: f75dad0a866cf1d40a5672b9b081de6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall3
+    second: {fileID: 2100000, guid: 8a573b0061306754e9377edb7d0d0cdb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -6,6 +6,12 @@
         Floor,
         Furniture,
         Wardrobe,
+        WallShelf,
+        Shelf,
+        BedShelf,
+        Carpet,
+        Sofa,
+        Bed,
         Window
     }
 }

@@ -48,10 +48,11 @@ namespace _Scripts.UI
                     ButtonGroup.instance.SelectedButton(this);
                     break;
                 case Type.Floor:
-                    ChangeFloor();
+                    SelectedFX(ChangeFloor());
                     break;
                 case Type.Furniture:
                     ChangeFurniture();
+                    SelectedFX(furnitureObject.transform);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -97,13 +98,11 @@ namespace _Scripts.UI
             }
         
             furnitureObject.SetActive(true);
-            furnitureObject.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
-            // SelectedFX(furnitureObject.transform);
         }
 
-        private void ChangeFloor()
+        private Transform ChangeFloor()
         {
-            SelectedFX(FloorChange.instance.Change(_texture));
+            return FloorChange.instance.Change(_texture);
         }
 
         private void ChangeWallColor()
@@ -148,8 +147,7 @@ namespace _Scripts.UI
 
         private void SelectedFX(Transform pos)
         {
-            var fxProofObject = Instantiate(fxMagicles.Result, pos.position, Quaternion.identity, pos);
-            fxProofObject.GetComponent<ParticleSystem>().Play();
+            pos.GetChild(0).GetComponent<ParticleSystem>().Play();
         }
     }
 }

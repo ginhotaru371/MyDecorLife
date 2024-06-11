@@ -48,11 +48,13 @@ namespace _Scripts.Decor
                     if (hit.collider)
                     {
                         if (!hit.collider.CompareTag("decor")) return;
-    
+                        
                         CameraMovement.instance.SetBool(false);
+                        
                         _selectedObject = hit.collider.gameObject;
                         _offset = _selectedObject.transform.position - GetMousePos();
                         _originPos = _selectedObject.transform.position;
+                        _selectedObject.layer = LayerMask.NameToLayer("Decor");
                     }
                 }
             }
@@ -65,12 +67,14 @@ namespace _Scripts.Decor
 
                 if (Vector3.Distance(hit.point, _target) < 0.5f)
                 {
+                    _selectedObject.layer = LayerMask.NameToLayer("Decorated");
                     _selectedObject.transform.position = _target;
                     _placed = true;
                 }
 
                 if (!_placed)
                 {
+                    _selectedObject.layer = LayerMask.NameToLayer("Decor");
                     _selectedObject.transform.position = GetMousePos() + _offset;
                     Debug.Log(_selectedObject.transform.position);
                 }
@@ -114,6 +118,7 @@ namespace _Scripts.Decor
                             _selectedObject = hit.collider.gameObject;
                             _offset = _selectedObject.transform.position - GetMousePos();
                             _originPos = _selectedObject.transform.position;
+                            _selectedObject.layer = LayerMask.NameToLayer("Decor");
                         }
                     }
                 }
@@ -126,12 +131,14 @@ namespace _Scripts.Decor
 
                     if (Vector3.Distance(hit.point, _target) < 0.5f)
                     {
+                        _selectedObject.layer = LayerMask.NameToLayer("Decorated");
                         _selectedObject.transform.position = _target;
                         _placed = true;
                     }
 
                     if (!_placed)
                     {
+                        _selectedObject.layer = LayerMask.NameToLayer("Decor");
                         _selectedObject.transform.position = GetMousePos() + _offset;
                         Debug.Log(_selectedObject.transform.position);
                     }
@@ -144,6 +151,7 @@ namespace _Scripts.Decor
                     CameraMovement.instance.SetBool(true);
                     if (_placed)
                     {
+                        // _selectedObject.layer = LayerMask.NameToLayer("Decorated");
                         _selectedObject = null;
                         _placed = false;
                     }

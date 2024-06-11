@@ -27,7 +27,8 @@ namespace _Scripts.Decor
             var newPos = transform.TransformPoint(oriPos);
             newPos.y += 2.0f;
             
-            var newBox = Instantiate(_level.boxDecoration, newPos, Quaternion.identity, transform);
+            var newBox = Instantiate(_level.boxDecoration, transform);
+            newBox.transform.position = newPos;
             newBox.layer = LayerMask.NameToLayer("Box");
 
             newBox.transform.DOLocalMove(oriPos, 1.0f).SetEase(Ease.OutBounce).OnComplete(() =>
@@ -37,19 +38,5 @@ namespace _Scripts.Decor
             
             ButtonGroup.instance.HideCompleteButton();
         }
-        //
-        // public void SpawnNewDecorations()
-        // {
-        //     foreach (var child in _level.decorations)
-        //     {
-        //         var furniture = Instantiate(child.Prefab, this.transform);
-        //         furniture.tag = child.Id;
-        //         decorations.Add(furniture);
-        //
-        //         furniture.SetActive(false);
-        //     }
-        //     
-        //     DecorButtonGroup.instance.Show();
-        // }
     }
 }

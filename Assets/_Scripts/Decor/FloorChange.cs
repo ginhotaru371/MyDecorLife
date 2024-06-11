@@ -4,7 +4,7 @@ namespace _Scripts.Decor
 {
     public class FloorChange : Singleton<FloorChange>
     {
-        private static readonly int BaseColorMap = Shader.PropertyToID("_BASE_COLOR_MAP");
+        private static readonly int MainTex = Shader.PropertyToID("_BaseMap");
 
         private Renderer rend;
 
@@ -18,7 +18,7 @@ namespace _Scripts.Decor
     
         public Transform Change(Texture2D texture)
         {
-            rend.material.SetTexture(BaseColorMap, texture);
+            rend.material.SetTexture(MainTex, texture);
             Debug.Log("Floor Changed");
 
             return this.transform;

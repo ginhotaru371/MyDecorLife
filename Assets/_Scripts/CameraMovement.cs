@@ -21,14 +21,15 @@ public class CameraMovement : Singleton<CameraMovement>
     // private float minZ = -8.28f;
     // private float maxZ = -7.92f;
 
-    // [SerializeField] private float minMapX, maxMapX, minMapY, maxMapY;
+    [SerializeField] private float minMapX, maxMapX, minMapY, maxMapY;
 
-    private bool movable;
+    private bool movable = true;
 
     public override void Awake()
     {
         base.KeepAlive(false);
         base.Awake();
+
     }
 
     private void Start()
@@ -94,47 +95,47 @@ public class CameraMovement : Singleton<CameraMovement>
 #endif
 
 #if UNITY_ANDROID
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
-            {
-                if (!movable || PaintManager.instance.Paintable()) return;
-            
-                var hit = Cast();
-                if (hit.collider)
-                {
-                    if (hit.collider.CompareTag("trash") || hit.collider.CompareTag("decor") || hit.collider.CompareTag("box") || hit.collider.CompareTag("box_decor") ) return;
-                    oriPos = myCameras[0].ScreenToWorldPoint(Input.mousePosition);
-                }
-            }
-            
-            if (touch.phase == TouchPhase.Moved)
-            {
-                if (!movable || PaintManager.instance.Paintable()) return;
-            
-                var hit = Cast();
-                if (hit.collider)
-                {
-                    if (hit.collider.CompareTag("trash") || hit.collider.CompareTag("decor") || hit.collider.CompareTag("box") || hit.collider.CompareTag("box_decor") ) return;
-                    var diff = oriPos - myCameras[0].ScreenToWorldPoint(Input.mousePosition);
-                   
-                    foreach (var cam in myCameras)
-                    {
-                        cam.transform.position += diff;
-                    }
-                }
-            }
-        }
+        // if (Input.touchCount > 0)
+        // {
+        //     Touch touch = Input.GetTouch(0);
+        //     if (touch.phase == TouchPhase.Began)
+        //     {
+        //         if (!movable || PaintManager.instance.Paintable()) return;
+        //     
+        //         var hit = Cast();
+        //         if (hit.collider)
+        //         {
+        //             if (hit.collider.CompareTag("trash") || hit.collider.CompareTag("decor") || hit.collider.CompareTag("box") || hit.collider.CompareTag("box_decor") ) return;
+        //             oriPos = myCameras[0].ScreenToWorldPoint(Input.mousePosition);
+        //         }
+        //     }
+        //     
+        //     if (touch.phase == TouchPhase.Moved)
+        //     {
+        //         if (!movable || PaintManager.instance.Paintable()) return;
+        //     
+        //         var hit = Cast();
+        //         if (hit.collider)
+        //         {
+        //             if (hit.collider.CompareTag("trash") || hit.collider.CompareTag("decor") || hit.collider.CompareTag("box") || hit.collider.CompareTag("box_decor") ) return;
+        //             var diff = oriPos - myCameras[0].ScreenToWorldPoint(Input.mousePosition);
+        //            
+        //             foreach (var cam in myCameras)
+        //             {
+        //                 cam.transform.position += diff;
+        //             }
+        //         }
+        //     }
+        // }
         
 #endif
 
     }
-
+    //
     // private Vector3 ClampCamera(Vector3 targetPos)
     // {
-    //     float camHeight = myCamera.orthographicSize;
-    //     float camWidth = myCamera.orthographicSize * myCamera.aspect;
+    //     float camHeight = myCameras[0].orthographicSize;
+    //     float camWidth = myCameras[0].orthographicSize * myCameras[0].aspect;
     //
     //     float minX = minMapX + camWidth;
     //     float maxX = maxMapX - camWidth;

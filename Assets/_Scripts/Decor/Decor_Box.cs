@@ -20,8 +20,7 @@ namespace _Scripts.Decor
 
         private Animator mAnimator;
 
-        private bool knifeDone, animationDone;
-        private bool open1Done, open2Done, open3Done, open4Done;
+        private bool knifeDone, animationDone, open1Done, open2Done, open3Done, open4Done;
 
         private void Start()
         {
@@ -230,34 +229,26 @@ namespace _Scripts.Decor
                 if (trigger == "Knife")
                 {
                     mAnimator.SetTrigger(trigger);
-                    yield return new WaitForSeconds(mAnimator.GetCurrentAnimatorStateInfo(0).length);
 
                     knifeDone = true;
-                    // open1Done = false;
                 }
                 else if (trigger == "Open1")
                 {
                     mAnimator.SetTrigger(trigger);
-                    yield return new WaitForSeconds(mAnimator.GetCurrentAnimatorStateInfo(0).length);
 
                     open1Done = true;
-                    // open2Done = false;
                 }
                 else if (trigger == "Open2")
                 {
                     mAnimator.SetTrigger(trigger);
-                    yield return new WaitForSeconds(mAnimator.GetCurrentAnimatorStateInfo(0).length);
 
                     open2Done = true;
-                    // open3Done = false;
                 }
                 else if (trigger == "Open3")
                 {
                     mAnimator.SetTrigger(trigger);
-                    yield return new WaitForSeconds(mAnimator.GetCurrentAnimatorStateInfo(0).length);
 
                     open3Done = true;
-                    // open4Done = false;
                 }
                 else if (trigger == "Open4")
                 {
@@ -271,12 +262,9 @@ namespace _Scripts.Decor
                 {
                     mAnimator.SetTrigger(trigger);
                     
-                    yield return new WaitForSeconds(mAnimator.GetCurrentAnimatorStateInfo(0).length);
+                    yield return new WaitForSeconds(mAnimator.GetCurrentAnimatorStateInfo(0).length + 0.5f);
                     
-                    transform.DOLocalMoveX(-0.5f, 0.5f).SetEase(Ease.InBack).OnComplete(()=>
-                    {
-                        Destroy(this.gameObject);
-                    });
+                    Destroy(this.gameObject);
                 }
             }
         }

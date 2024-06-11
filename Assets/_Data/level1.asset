@@ -18,46 +18,196 @@ MonoBehaviour:
   furnitures:
   - id: wardrobe1
     type: 3
-    image: {fileID: 21300000, guid: c8a406bf06a6c4646be9f34e90a518dc, type: 3}
+    image: {fileID: 21300000, guid: 0019c7bffeb7c2d47929808d8b97fb54, type: 3}
     prefab: {fileID: 7133413733410423191, guid: 718415b2eee0f534e967d4aaead0c4b9,
       type: 3}
   - id: wardrobe2
     type: 3
     image: {fileID: 21300000, guid: f8335d39b3068fa4b9c7b123e260967f, type: 3}
-    prefab: {fileID: 7300357769250532115, guid: 799853ad6e327ec4ea3a0197288c064c,
+    prefab: {fileID: 7929900603037081824, guid: 41b187292584a7b4f92797d6e7336725,
       type: 3}
   - id: wardrobe3
     type: 3
     image: {fileID: 21300000, guid: 9449562529550df4dafeb65a3e1cc89b, type: 3}
-    prefab: {fileID: 8618497524654236352, guid: 60b65982c524de84e83694cdbd8c7162,
+    prefab: {fileID: 6592493349940416003, guid: 60b65982c524de84e83694cdbd8c7162,
+      type: 3}
+  - id: bed1
+    type: 9
+    image: {fileID: 21300000, guid: 0019c7bffeb7c2d47929808d8b97fb54, type: 3}
+    prefab: {fileID: 3707544795944581074, guid: a070bd555c5bdf3418e26cb3d067ed7d,
+      type: 3}
+  - id: bed2
+    type: 9
+    image: {fileID: 21300000, guid: f8335d39b3068fa4b9c7b123e260967f, type: 3}
+    prefab: {fileID: 2511082924877689564, guid: 5fc1badce41aab548a66f959e1261069,
+      type: 3}
+  - id: bed3
+    type: 9
+    image: {fileID: 21300000, guid: 9449562529550df4dafeb65a3e1cc89b, type: 3}
+    prefab: {fileID: 726285498516293702, guid: 06b077fdd720899438d5cb449c7fb27d, type: 3}
+  - id: bedshelf1
+    type: 6
+    image: {fileID: 21300000, guid: 0019c7bffeb7c2d47929808d8b97fb54, type: 3}
+    prefab: {fileID: 6835559705583119468, guid: ec534a3cc1e849d49a70c473a8c17f11,
+      type: 3}
+  - id: bedshelf2
+    type: 6
+    image: {fileID: 21300000, guid: f8335d39b3068fa4b9c7b123e260967f, type: 3}
+    prefab: {fileID: 4252369201875919776, guid: 59c689d24b4533d4f9f7f26eb9961d10,
+      type: 3}
+  - id: bedshelf3
+    type: 6
+    image: {fileID: 21300000, guid: 9449562529550df4dafeb65a3e1cc89b, type: 3}
+    prefab: {fileID: 1219139927169203504, guid: 43812bf45a2753046b23c9fe77f1a3cf,
+      type: 3}
+  - id: carpet1
+    type: 7
+    image: {fileID: 21300000, guid: 0019c7bffeb7c2d47929808d8b97fb54, type: 3}
+    prefab: {fileID: 6551324183350437592, guid: 9845fb969c36a1a42926a2080a504288,
+      type: 3}
+  - id: carpet2
+    type: 7
+    image: {fileID: 21300000, guid: f8335d39b3068fa4b9c7b123e260967f, type: 3}
+    prefab: {fileID: 7828898417507231434, guid: 4c6e5d56091b0154e97423dae273727f,
+      type: 3}
+  - id: carpet3
+    type: 7
+    image: {fileID: 21300000, guid: 9449562529550df4dafeb65a3e1cc89b, type: 3}
+    prefab: {fileID: 3818346146466333876, guid: d45cd63e12fc3d34c91d6bb23d428114,
+      type: 3}
+  - id: shelf1
+    type: 5
+    image: {fileID: 21300000, guid: 0019c7bffeb7c2d47929808d8b97fb54, type: 3}
+    prefab: {fileID: 6290276388505353236, guid: 3f7cdcc6a4199254ca528704e1e46d11,
+      type: 3}
+  - id: shelf2
+    type: 5
+    image: {fileID: 21300000, guid: f8335d39b3068fa4b9c7b123e260967f, type: 3}
+    prefab: {fileID: 892757860115701743, guid: e2f7ea21ecfd4974aa1067a63f2f013c, type: 3}
+  - id: shelf3
+    type: 5
+    image: {fileID: 21300000, guid: 9449562529550df4dafeb65a3e1cc89b, type: 3}
+    prefab: {fileID: 1382157567805476817, guid: fe1512d9569d11d4aa4576d94aba82a6,
+      type: 3}
+  - id: sofa1
+    type: 8
+    image: {fileID: 21300000, guid: 0019c7bffeb7c2d47929808d8b97fb54, type: 3}
+    prefab: {fileID: 8445073950804764240, guid: f19bb88b4a815754bb4080c0b82f3978,
+      type: 3}
+  - id: sofa2
+    type: 8
+    image: {fileID: 21300000, guid: f8335d39b3068fa4b9c7b123e260967f, type: 3}
+    prefab: {fileID: 8253978013769889819, guid: cab732526305bfa47b404cd0aed4c796,
+      type: 3}
+  - id: sofa3
+    type: 8
+    image: {fileID: 21300000, guid: 9449562529550df4dafeb65a3e1cc89b, type: 3}
+    prefab: {fileID: 942180011157292736, guid: e12ed6594e1800546ac107a6a34ad3b8, type: 3}
+  - id: wallshelf1
+    type: 4
+    image: {fileID: 21300000, guid: 0019c7bffeb7c2d47929808d8b97fb54, type: 3}
+    prefab: {fileID: 336897416776247580, guid: 16f5893f214ad7e4fa19034c3e2b0ead, type: 3}
+  - id: wallshelf2
+    type: 4
+    image: {fileID: 21300000, guid: f8335d39b3068fa4b9c7b123e260967f, type: 3}
+    prefab: {fileID: 1714979234557897238, guid: 96b810a46ee81cb4eaac30f04592bbbe,
+      type: 3}
+  - id: wallshelf3
+    type: 4
+    image: {fileID: 21300000, guid: 9449562529550df4dafeb65a3e1cc89b, type: 3}
+    prefab: {fileID: 4060703812848148213, guid: e9f91ee6156714647969fcbb2886f496,
       type: 3}
   decorations:
-  - prefab: {fileID: 8445073950804764240, guid: f19bb88b4a815754bb4080c0b82f3978,
+  - prefab: {fileID: 3733604762904127709, guid: ce9d202938d2ac248a22b20c7c6e8970,
       type: 3}
     position: {x: 0, y: 0, z: 0}
-  - prefab: {fileID: 1718534945312669760, guid: bee7f6e1fe781ff4391c6ead781da53e,
+  - prefab: {fileID: 5803905926134799549, guid: e337b8addb76bbf4986a69ac93506e30,
       type: 3}
     position: {x: 0, y: 0, z: 0}
-  - prefab: {fileID: 6835559705583119468, guid: ec534a3cc1e849d49a70c473a8c17f11,
+  - prefab: {fileID: 8363775392765835937, guid: 10373e2abaa4d344ab45f537126ae358,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 1661360487359812640, guid: f0875cd62d1268d449556a80e4970179,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 2823245851374441589, guid: e283e08f01f129e4d93b41c8a6d6e3de,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 5214593407835707302, guid: add8ead74e250e44f838921bdc27059a,
       type: 3}
     position: {x: 0, y: 0, z: 0}
   - prefab: {fileID: 6069114754866246872, guid: d717917c71f3cf34f8cd29d1d1d83a8b,
       type: 3}
     position: {x: 0, y: 0, z: 0}
-  - prefab: {fileID: 3733604762904127709, guid: ce9d202938d2ac248a22b20c7c6e8970,
+  - prefab: {fileID: 1718534945312669760, guid: bee7f6e1fe781ff4391c6ead781da53e,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 1547954844837119120, guid: 0b6a24c97afc1d848aaed70766fe6ecf,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 743220431924101880, guid: 2c08a04c817a3ce4d93796b0ae8cdab7, type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 5746264301360666953, guid: 488ef1a80da2398458488d7accb21825,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 6605523217640159682, guid: 07fb234bf745b144086ef211e4b174f4,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 3684598289072056954, guid: 2cf22391938ed9e459e0115cc75f27af,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 6127708440857280760, guid: 4c52393932d90f74ea949a995530ba33,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 2388283856989613891, guid: ed5110ae07efb4a4e9d4ef35646214b1,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 8610979452808256947, guid: 92efea13cd3c4464d84bd86fc5043154,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 8690581139156730379, guid: 267075a373327374eac906135b9afe6f,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 3342412654437177309, guid: ba80c61a1cf62204ba7f2b20879c0d64,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 1590351693839952258, guid: 43b9c31f3adf2874cacbe2123a323590,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 9119487827481746336, guid: 879c4ece64faad140be52bdc4666a6c5,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 8476044709863178472, guid: c1d23538f76dd964797bcd44a02dd441,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 7417600415643488693, guid: a42b5930a056bc64e869e1bbf5eba41b,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 105182658321623820, guid: 662be8e324f4a1e469d98d9eac6406d0, type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 7304618354308668732, guid: a84e53aceb14cfb48bc9fb33ea49a8ca,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 5379189924829758966, guid: 00881d81e15daec41afb7b961d017c6c,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 7006300600112364067, guid: 6cc2bb14d89dafa49b022cd998b761d8,
+      type: 3}
+    position: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 6912865156666437225, guid: 2264c0ac2638f86429550285c7958ee3,
       type: 3}
     position: {x: 0, y: 0, z: 0}
   wallColor:
+  - _color: {r: 0.9843137, g: 0.8666667, b: 0.7921569, a: 1}
+    _image: {fileID: 0}
   - _color: {r: 1, g: 0.827451, b: 0.93333334, a: 1}
     _image: {fileID: 0}
-  - _color: {r: 0.6312891, g: 1, b: 0.2688679, a: 1}
-    _image: {fileID: 0}
-  - _color: {r: 0.3254717, g: 0.59866, b: 1, a: 1}
+  - _color: {r: 0.98039216, g: 0.9098039, b: 0.6117647, a: 1}
     _image: {fileID: 0}
   floorMat:
   - _texture: {fileID: 2800000, guid: 5439a4a75c63d7f44a63892a6b925b89, type: 3}
-    _image: {fileID: 21300000, guid: c8a406bf06a6c4646be9f34e90a518dc, type: 3}
-  - _texture: {fileID: 2800000, guid: 99897a992730c7b4db02d4aaf1051e66, type: 3}
+    _image: {fileID: 21300000, guid: 0019c7bffeb7c2d47929808d8b97fb54, type: 3}
+  - _texture: {fileID: 2800000, guid: 15cb7dbde3fc50348b411f63f51818c2, type: 3}
     _image: {fileID: 21300000, guid: f8335d39b3068fa4b9c7b123e260967f, type: 3}
-  - _texture: {fileID: 2800000, guid: 840cc373853c6634a997c3cdda8496f9, type: 3}
+  - _texture: {fileID: 2800000, guid: cf09360080faeab42bcfd22caada4906, type: 3}
     _image: {fileID: 21300000, guid: 9449562529550df4dafeb65a3e1cc89b, type: 3}

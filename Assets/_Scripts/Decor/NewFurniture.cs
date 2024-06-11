@@ -25,7 +25,6 @@ namespace _Scripts.Decor
             foreach (var child in _level.furnitures)
             {
                 var furniture = Instantiate(child.Prefab, this.transform);
-                furniture.tag = child.Id;
                 _furnitures.Add(furniture);
 
                 furniture.SetActive(false);
@@ -34,6 +33,17 @@ namespace _Scripts.Decor
             ButtonGroup.instance.HideCompleteButton();
             
             DecorButtonGroup.instance.Show();
+        }
+
+        public void RemoveUselessFurniture()
+        {
+            foreach (Transform child in transform)
+            {
+                if (!child.gameObject.activeSelf)
+                {
+                    Destroy(child.gameObject);
+                }
+            }
         }
     }
 }

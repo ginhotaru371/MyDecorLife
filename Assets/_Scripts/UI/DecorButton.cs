@@ -54,10 +54,10 @@ namespace _Scripts.UI
                     ButtonGroup.instance.Hide();
                     ButtonGroup.instance.Show(newFurnitures, this);
                     break;
-                case Type.Window:
-                    foreach (var child in newFurnitures)
+                case Type.Bed:
+                    foreach (var child in level.furnitures)
                     {
-                        if (child.Type == Type.Wardrobe)
+                        if (child.Type == Type.Bed)
                         {
                             newFurnitures.Add(child);
                         }
@@ -67,6 +67,78 @@ namespace _Scripts.UI
                     ButtonGroup.instance.HideCompleteButton();
                     ButtonGroup.instance.Hide();
                     ButtonGroup.instance.Show(newFurnitures, this);
+                    break;
+                case Type.WallShelf:
+                    foreach (var child in level.furnitures)
+                    {
+                        if (child.Type == Type.WallShelf)
+                        {
+                            newFurnitures.Add(child);
+                        }
+                    }
+                
+                    DecorButtonGroup.instance.Hide();
+                    ButtonGroup.instance.HideCompleteButton();
+                    ButtonGroup.instance.Hide();
+                    ButtonGroup.instance.Show(newFurnitures, this);
+                    break;
+                case Type.Shelf:
+                    foreach (var child in level.furnitures)
+                    {
+                        if (child.Type == Type.Shelf)
+                        {
+                            newFurnitures.Add(child);
+                        }
+                    }
+                
+                    DecorButtonGroup.instance.Hide();
+                    ButtonGroup.instance.HideCompleteButton();
+                    ButtonGroup.instance.Hide();
+                    ButtonGroup.instance.Show(newFurnitures, this);
+                    break;
+                case Type.BedShelf:
+                    foreach (var child in level.furnitures)
+                    {
+                        if (child.Type == Type.BedShelf)
+                        {
+                            newFurnitures.Add(child);
+                        }
+                    }
+                
+                    DecorButtonGroup.instance.Hide();
+                    ButtonGroup.instance.HideCompleteButton();
+                    ButtonGroup.instance.Hide();
+                    ButtonGroup.instance.Show(newFurnitures, this);
+                    break;
+                case Type.Carpet:
+                    foreach (var child in level.furnitures)
+                    {
+                        if (child.Type == Type.Carpet)
+                        {
+                            newFurnitures.Add(child);
+                        }
+                    }
+                
+                    DecorButtonGroup.instance.Hide();
+                    ButtonGroup.instance.HideCompleteButton();
+                    ButtonGroup.instance.Hide();
+                    ButtonGroup.instance.Show(newFurnitures, this);
+                    break;
+                case Type.Sofa:
+                    foreach (var child in level.furnitures)
+                    {
+                        if (child.Type == Type.Sofa)
+                        {
+                            newFurnitures.Add(child);
+                        }
+                    }
+                
+                    DecorButtonGroup.instance.Hide();
+                    ButtonGroup.instance.HideCompleteButton();
+                    ButtonGroup.instance.Hide();
+                    ButtonGroup.instance.Show(newFurnitures, this);
+                    break;
+                case Type.Window:
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

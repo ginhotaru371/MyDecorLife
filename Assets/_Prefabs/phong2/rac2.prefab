@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7037776109040407139}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Root_Disappear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 811140430132431228}
   - component: {fileID: 7798630454385495694}
   - component: {fileID: 3760052381606000244}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: canh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7166546489873421939}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Recycle_Box_Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1458132648357496126}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 5780232015798836967}
   - component: {fileID: 4728921245179981974}
   - component: {fileID: 1705098719229397523}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: rac
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8452820940528100138}
   - component: {fileID: 7410448164340803879}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dispenser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 8195891236437448129}
   - component: {fileID: 6834618161448925461}
   - component: {fileID: 1758628515504825028}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: canh5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 720948342585501326}
   - component: {fileID: 3339995284967294907}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BoxPack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -728,7 +728,7 @@ GameObject:
   - component: {fileID: 8054769223277363572}
   - component: {fileID: 8797659944993078594}
   - component: {fileID: 720772438755351053}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: canh6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -892,7 +892,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4389248824002086713}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Skotch_End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 3232923385102807148}
   - component: {fileID: 4531080212567723365}
   - component: {fileID: 8466425165251506625}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: canh4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1140,7 +1140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 918671513589884166}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Skotch_Begin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1171,7 +1171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2185319871007312916}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
